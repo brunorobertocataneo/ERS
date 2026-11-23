@@ -1286,3 +1286,27 @@ section h2{font-size:clamp(2.6rem,3.3vw,4.1rem);font-weight:800;line-height:1.16
  #team .team-profile-content{margin:0}
 }
 @media(prefers-reduced-motion:reduce){#team .carousel-img{transition:none}}
+
+/* Ajuste final de enquadramento das fotos da equipe:
+   preserva a proporção original sem ampliar/cortar os rostos. */
+#team .team-showcase .team-carousel {
+    background: #151820;
+}
+#team .team-showcase .carousel-img,
+#team .team-showcase .carousel-img.is-current,
+#team .team-showcase .carousel-img.is-previous,
+#team .team-showcase .carousel-img.is-next {
+    object-fit: contain;
+    object-position: center center;
+    background: #151820;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#team .team-showcase .carousel-img.is-current {
+    opacity: 1;
+}
+@media(max-width:600px) {
+    #team .team-showcase .carousel-img {
+        padding: 6px;
+    }
+}
