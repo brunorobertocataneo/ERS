@@ -3,12 +3,12 @@
 <head>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-carousel-portrait-2">
+    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-team-3panel-final">
     <!-- CSS principal carregado diretamente para evitar cache dos @imports -->
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-carousel-portrait-2">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-team-3panel-final">
 
     <!-- JavaScript -->
-    <script src="js/script.js?v=ers-carousel-portrait-2" defer></script>
+    <script src="js/script.js?v=ers-team-3panel-final" defer></script>
 
     <!-- Ícone -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/logo.png" type="image/x-icons">
@@ -265,10 +265,17 @@
     </section>
 
     <section id="team">
-        <div class="container">
-            <span class="section-kicker">NOSSA EQUIPE</span><h2>Quem faz a ERS</h2>
-            <div class="team-stage">
-            <div class="team-carousel" tabindex="0" aria-label="Carrossel de fotos da equipe ERS" aria-roledescription="carrossel">
+    <div class="container team-section-container">
+        <h2 class="team-top-title"><span>NOSSA EQUIPE</span></h2>
+        <div class="team-showcase">
+            <div class="team-intro">
+                <img class="team-intro-logo" src="assets/logo.png" alt="ERS Seguros">
+                <h3>Quem faz a <strong>ERS Seguros</strong></h3>
+                <div class="team-accent-line" aria-hidden="true"></div>
+                <p>Conheça os profissionais que fazem a ERS acontecer. Uma equipe dedicada a cuidar da sua proteção com atendimento próximo e de confiança.</p>
+                <div class="team-total"><span class="team-total-icon" aria-hidden="true">♟</span><span><strong>15 colaboradores</strong><small>Conheça nossa equipe</small></span></div>
+            </div>
+            <div class="team-carousel" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Fotos dos colaboradores">
                 <div class="carousel-track">
                     <img src="assets/team1.png" alt="Equipe 1" class="carousel-img is-current" draggable="false" fetchpriority="high">
                     <img src="assets/team2.png" alt="Equipe 2" class="carousel-img" draggable="false" loading="lazy">
@@ -286,16 +293,28 @@
                     <img src="assets/team15.jpg" alt="Equipe 15" class="carousel-img" draggable="false" loading="lazy">
                     <img src="assets/team17.jpg" alt="Equipe 17" class="carousel-img" draggable="false" loading="lazy">
                 </div>
-                <button type="button" class="team-carousel-prev team-carousel-arrow" aria-label="Foto anterior">&#10094;</button>
-                <button type="button" class="team-carousel-next team-carousel-arrow" aria-label="Próxima foto">&#10095;</button>
-                <div class="team-carousel-footer">
-                    <div class="team-carousel-dots" aria-label="Selecionar foto"></div>
-                    <span class="team-carousel-counter" aria-live="polite">1 / 15</span>
+            </div>
+            <div class="team-profile">
+                <div class="team-profile-content" aria-live="polite" aria-atomic="true">
+                    <h3 class="team-person-name">Conheça nossa equipe</h3>
+                    <span class="team-person-role">Profissionais ERS</span>
+                    <p class="team-person-description">Conheça os colaboradores que fazem parte da nossa história e ajudam a cuidar de cada cliente.</p>
+                </div>
+                <div class="team-profile-controls">
+                    <div class="team-navigation">
+                        <button type="button" class="team-carousel-prev team-carousel-arrow" aria-label="Foto anterior">&#10094;</button>
+                        <div class="team-carousel-dots" aria-label="Selecionar foto"></div>
+                        <button type="button" class="team-carousel-next team-carousel-arrow" aria-label="Próxima foto">&#10095;</button>
+                    </div>
+                    <div class="team-status">
+                        <span class="team-carousel-counter" aria-live="polite">1 / 15</span>
+                        <button type="button" class="team-carousel-toggle" aria-label="Pausar carrossel" aria-pressed="true"><span aria-hidden="true">Ⅱ</span> Automático</button>
+                    </div>
                 </div>
             </div>
-        </div><!-- team-stage -->
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="faq">
         <div class="container">
