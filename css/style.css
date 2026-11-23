@@ -1576,3 +1576,159 @@ body:not(.light-theme) .team-carousel-dot.is-active{
  body:not(.light-theme) .service-card,
  body:not(.light-theme) .benefit-card{transition:none!important}
 }
+
+
+/* ERS 2026-11-23 — identidade vermelha; remover rosa da abertura */
+:root{
+ --ers-electric:#dc2626;
+ --ers-electric-light:#ef4444;
+ --ers-electric-glow:rgba(220,38,38,.25);
+}
+.home-container{
+  background-color:#0e1017;
+  background-image:linear-gradient(100deg,rgba(10,12,19,.96) 0%,rgba(13,15,22,.82) 52%,rgba(17,16,23,.48) 100%),url('../assets/bckg.jpg');
+  background-size:cover,cover;
+  background-position:center,center;
+}
+.home-container::before{background:linear-gradient(180deg,transparent 65%,rgba(9,11,17,.38))}
+.home-container .hero-ambient{display:none}
+#home h1 span,body:not(.light-theme) #home h1 span,
+.light-theme #home h1 span{
+ background:none!important;
+ -webkit-background-clip:initial!important;
+ background-clip:initial!important;
+ -webkit-text-fill-color:#ef4444!important;
+ color:#ef4444!important;
+}
+#home .hero-eyebrow{color:#ffb5b5;border-color:rgba(220,38,38,.36);background:rgba(185,28,28,.16)}
+#home .hero-eyebrow-mark,body:not(.light-theme) .hero-eyebrow-mark{background:#dc2626;box-shadow:0 0 12px rgba(220,38,38,.55)}
+body:not(.light-theme) .header .navbar a.nav-contact,
+body:not(.light-theme) #home .hero-primary,
+body:not(.light-theme) #whatsapp-form button[type="submit"]{
+ background:linear-gradient(115deg,#b91c1c,#dc2626 55%,#ef4444);
+ border-color:rgba(248,113,113,.55);
+ box-shadow:0 9px 28px rgba(185,28,28,.27);
+}
+body:not(.light-theme) .header .navbar a.nav-contact:hover,
+body:not(.light-theme) #home .hero-primary:hover,
+body:not(.light-theme) #whatsapp-form button[type="submit"]:hover{box-shadow:0 14px 36px rgba(220,38,38,.38)}
+body:not(.light-theme) .section-kicker,body:not(.light-theme) .team-top-title{color:#f87171}
+body:not(.light-theme) .team-top-title::before,body:not(.light-theme) .team-top-title::after{background:linear-gradient(90deg,transparent,#dc2626)}
+body:not(.light-theme) .service-icon{background:rgba(220,38,38,.14);border-color:rgba(220,38,38,.42)}
+body:not(.light-theme) .service-card:hover,body:not(.light-theme) .benefit-card:hover{border-color:rgba(220,38,38,.7);box-shadow:0 18px 52px rgba(220,38,38,.12)}
+body:not(.light-theme) .team-carousel-dot.is-active{background:#dc2626}
+body:not(.light-theme) #about,
+body:not(.light-theme) #services,
+body:not(.light-theme) #vitrine,
+body:not(.light-theme) #beneficios,
+body:not(.light-theme) #team,
+body:not(.light-theme) #faq,
+body:not(.light-theme) #contact{
+ background-image:radial-gradient(ellipse at 8% 15%,rgba(185,28,28,.15),transparent 40%),
+ radial-gradient(ellipse at 94% 85%,rgba(127,29,29,.12),transparent 40%),
+ linear-gradient(135deg,#12151f,#0d1019 60%,#151219);
+}
+body:not(.light-theme) #services,body:not(.light-theme) #beneficios,body:not(.light-theme) #faq{
+ background-image:radial-gradient(ellipse at 89% 16%,rgba(185,28,28,.17),transparent 40%),
+ linear-gradient(135deg,#10121a,#171721 70%,#10121a);
+}
+/* Certificação digital: elimina altura 120vh, imagem fixa e transbordamentos */
+.home-container-certificado{
+ display:block!important;
+ position:relative;
+ width:100%;
+ height:auto!important;
+ min-height:0!important;
+ margin:0!important;
+ padding:clamp(38px,5vw,75px) clamp(18px,4vw,45px)!important;
+ box-sizing:border-box;
+ overflow:hidden;
+ background:linear-gradient(130deg,#13151e,#1b1017 55%,#0e111b);
+}
+#certificado{
+ display:block;
+ width:100%;max-width:1200px;
+ min-height:0;height:auto;
+ margin:0 auto!important;padding:0!important;
+ box-sizing:border-box;position:relative;z-index:1;
+}
+#certificado .certificado-wrapper{
+ display:grid!important;
+ grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+ align-items:center;gap:clamp(16px,3vw,48px);
+ width:100%;max-width:1200px;height:auto!important;min-height:0!important;
+ margin:0 auto;padding:clamp(20px,3vw,38px);box-sizing:border-box;
+ overflow:hidden;border:1px solid rgba(248,113,113,.25);border-radius:26px;
+ background:linear-gradient(140deg,#1c1d29,#211520 65%,#161a23);
+ box-shadow:0 24px 68px rgba(0,0,0,.28);
+}
+#certificado .service-card1{
+ grid-column:1;grid-row:1;
+ display:flex;flex-direction:column;align-items:flex-start;gap:16px;
+ position:relative;z-index:2;min-width:0;max-width:100%;
+ width:100%;height:auto;margin:0;padding:clamp(12px,2.5vw,30px);
+ text-align:left;box-sizing:border-box;
+ background:transparent;border:0;border-radius:0;box-shadow:none;
+}
+#certificado .service-card1 h2{
+ margin:0 0 4px;text-align:left;
+ font-size:clamp(2.5rem,3.2vw,4rem);line-height:1.13;
+ color:#fff!important;-webkit-text-fill-color:#fff!important;
+}
+#certificado .service-card1 ul{
+ display:grid;gap:12px;max-width:100%;
+ margin:0!important;padding:0!important;
+ list-style:none!important;
+}
+#certificado .service-card1 li{
+ display:flex;align-items:flex-start;gap:10px;
+ font-size:clamp(1.14rem,1.2vw,1.34rem);line-height:1.5;
+ color:#eceef3;overflow-wrap:anywhere;
+}
+#certificado .service-card1 li::before{
+ content:"✓";color:#f87171;font-weight:900;flex:none;
+}
+#certificado .service-card1 .btn{
+ display:inline-flex;align-items:center;justify-content:center;
+ width:auto;max-width:100%;min-height:47px;box-sizing:border-box;
+ margin:7px 0 0;padding:12px 23px;border-radius:12px;
+ background:linear-gradient(115deg,#b91c1c,#dc2626,#ef4444);
+ color:white;box-shadow:0 10px 27px rgba(220,38,38,.25);
+ font-size:1.3rem;font-weight:700;
+}
+#certificado .service-card1 p{
+ margin:0!important;font-size:1.02rem!important;
+ line-height:1.55;color:#bfc3cc;
+}
+#certificado .bg-certificado-fixa{
+ grid-column:2;grid-row:1;
+ display:block;position:relative!important;
+ width:100%!important;max-width:460px;height:auto!important;
+ max-height:420px;min-width:0;
+ top:auto!important;left:auto!important;
+ margin:0 auto;transform:none!important;
+ object-fit:contain;filter:drop-shadow(0 22px 35px rgba(0,0,0,.25));
+ pointer-events:none;z-index:1;
+}
+body:not(.light-theme) #certificado{
+ background:none;border:0;
+}
+.light-theme .home-container-certificado{background:linear-gradient(130deg,#f8f8fa,#fff1f2,#f6f6f8)}
+.light-theme #certificado .certificado-wrapper{
+ background:linear-gradient(130deg,#fff,#faf4f5);
+ border-color:#f3c7c7;box-shadow:0 15px 45px rgba(30,25,35,.09);
+}
+.light-theme #certificado .service-card1 h2{color:#171b25!important;-webkit-text-fill-color:#171b25!important}
+.light-theme #certificado .service-card1 li{color:#343943}
+.light-theme #certificado .service-card1 p{color:#555f6b}
+@media(max-width:760px){
+ #certificado .certificado-wrapper{grid-template-columns:minmax(0,1fr);gap:8px;padding:20px}
+ #certificado .service-card1{grid-column:1;grid-row:1;padding:10px}
+ #certificado .bg-certificado-fixa{grid-column:1;grid-row:2;max-width:min(100%,360px);max-height:300px}
+}
+@media(max-width:480px){
+ .home-container-certificado{padding:30px 12px!important}
+ #certificado .certificado-wrapper{padding:14px;border-radius:18px}
+ #certificado .service-card1{padding:9px;gap:13px}
+ #certificado .service-card1 .btn{width:100%}
+}
