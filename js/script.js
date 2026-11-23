@@ -347,3 +347,77 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+// ERS: entrada suave nas seções e navegação inteligente
+(() => {
+    const header = document.querySelector('.header');
+    const links = Array.from(document.querySelectorAll('.header .navbar a[href^="#"]'));
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const updateHeader = () => {
+        if (header) header.classList.toggle('is-scrolled', window.scrollY > 28);
+    };
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, {passive:true});
+
+    const setCurrentSection = () => {
+        let activeId = 'home';
+        for (const section of sections) {
+            if (section.getBoundingClientRect().top <= 180) activeId = section.id;
+        }
+        links.forEach(link => {
+            const isActive = link.getAttribute('href') === '#' + activeId;
+            link.classList.toggle('active', isActive);
+            if (isActive) link.setAttribute('aria-current','location');
+            else link.removeAttribute('aria-current');
+        });
+    };
+    setCurrentSection();
+    window.addEventListener('scroll', setCurrentSection, {passive:true});
+
+    const menuButton = document.getElementById('menu-toggle');
+    const nav = document.getElementById('navbar');
+    if (menuButton && nav) {
+        const syncMenu = () => {
+            const expanded = nav.classList.contains('active');
+            menuButton.setAttribute('aria-expanded', String(expanded));
+            menuButton.setAttribute('aria-label', expanded ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+        };
+        menuButton.addEventListener('click', syncMenu);
+        nav.addEventListener('click', syncMenu);
+        document.addEventListener('click', syncMenu);
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuButton.classList.remove('active');
+                syncMenu();
+                menuButton.focus();
+            }
+        });
+        syncMenu();
+    }
+
+    const motionDisabled = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!motionDisabled && 'IntersectionObserver' in window) {
+        const items = document.querySelectorAll('#about .container > *, #services .container > .section-kicker, #services .container > h2, #services .container > .section-lead, #services .service-card, #beneficios .benefit-card, #team .container > *, #faq .faq-item, #contact .container > .section-kicker, #contact .container > h2, #contact .container > .section-lead, #contact .contact-showcase');
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+            });
+        }, {threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+        items.forEach((element,i) => {
+            element.classList.add('reveal-item');
+            // Pequeno intervalo apenas dentro da grade de cards.
+            if (element.classList.contains('service-card') || element.classList.contains('benefit-card')) {
+                element.style.setProperty('--reveal-delay', (i % 3)*75 + 'ms');
+            }
+            revealObserver.observe(element);
+        });
+        document.body.classList.add('motion-ready');
+        // Conteúdo já visível deve aparecer imediatamente.
+        requestAnimationFrame(() => items.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.9) el.classList.add('is-visible');
+        }));
+    }
+})();
