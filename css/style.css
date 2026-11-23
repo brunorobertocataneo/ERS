@@ -1448,3 +1448,131 @@ html,body{max-width:100%;overflow-x:clip}
   #contact .contact-showcase #whatsapp-form{padding:20px;gap:14px}
   #contact #whatsapp-form textarea#mensagem{height:108px!important;min-height:108px!important}
 }
+
+/* ERS — identidade visual contínua: grafite profundo + coral elétrico */
+:root{
+  --ers-electric:#ff365d;
+  --ers-electric-light:#ff8194;
+  --ers-electric-glow:rgba(255,54,93,.30);
+  --ers-page-dark:#0b0e18;
+}
+body:not(.light-theme){
+  background:var(--ers-page-dark);
+  color:#f8f9fc;
+}
+body:not(.light-theme) #about,
+body:not(.light-theme) #services,
+body:not(.light-theme) #vitrine,
+body:not(.light-theme) #certificado,
+body:not(.light-theme) #beneficios,
+body:not(.light-theme) #team,
+body:not(.light-theme) #faq,
+body:not(.light-theme) #contact{
+  position:relative;
+  background-color:#10131e;
+  background-image:
+    radial-gradient(ellipse at 8% 13%,rgba(255,54,93,.18) 0%,transparent 38%),
+    radial-gradient(ellipse at 93% 86%,rgba(149,34,67,.17) 0%,transparent 42%),
+    linear-gradient(135deg,#131522 0%,#0c101a 54%,#15111d 100%);
+  background-size:cover;
+  background-attachment:scroll;
+  border-top:1px solid rgba(255,255,255,.055);
+}
+body:not(.light-theme) #services,
+body:not(.light-theme) #beneficios,
+body:not(.light-theme) #faq{
+  background-image:
+    radial-gradient(ellipse at 86% 16%,rgba(255,54,93,.20) 0%,transparent 39%),
+    radial-gradient(ellipse at 6% 89%,rgba(111,30,65,.15),transparent 44%),
+    linear-gradient(145deg,#0b101b 0%,#141625 57%,#0e101b 100%);
+}
+body:not(.light-theme) #team,
+body:not(.light-theme) #contact{
+  background-image:
+    radial-gradient(ellipse at 4% 32%,rgba(255,54,93,.22) 0%,transparent 38%),
+    radial-gradient(ellipse at 92% 76%,rgba(255,54,93,.10),transparent 45%),
+    linear-gradient(135deg,#10121d,#16111d 48%,#0e111b);
+}
+body:not(.light-theme) .footer{
+  background:linear-gradient(135deg,#10101b,#210e1d 55%,#0b0d16);
+  border-top:1px solid rgba(255,75,103,.27);
+}
+body:not(.light-theme) .service-card,
+body:not(.light-theme) .benefit-card,
+body:not(.light-theme) .faq-item,
+body:not(.light-theme) .location-card{
+  background:linear-gradient(148deg,rgba(37,39,54,.95),rgba(19,21,33,.98));
+  border:1px solid rgba(255,255,255,.11);
+  box-shadow:0 18px 44px rgba(0,0,0,.18);
+}
+body:not(.light-theme) .service-card:hover,
+body:not(.light-theme) .benefit-card:hover{
+  border-color:rgba(255,54,93,.7);
+  box-shadow:0 18px 52px rgba(255,54,93,.13);
+}
+body:not(.light-theme) .section-kicker,
+body:not(.light-theme) .team-top-title{
+  color:var(--ers-electric-light);
+}
+body:not(.light-theme) .team-top-title::before,
+body:not(.light-theme) .team-top-title::after{
+  background:linear-gradient(90deg,transparent,var(--ers-electric));
+}
+body:not(.light-theme) .service-icon{
+  background:rgba(255,54,93,.13);
+  color:#fff;
+  border-color:rgba(255,54,93,.45);
+}
+body:not(.light-theme) .header .navbar a.nav-contact,
+body:not(.light-theme) #home .hero-primary,
+body:not(.light-theme) #whatsapp-form button[type="submit"]{
+  background:linear-gradient(115deg,#e51d48 0%,#ff365d 60%,#ff5978 100%);
+  color:#fff;
+  border-color:rgba(255,165,178,.6);
+  box-shadow:0 10px 32px rgba(255,54,93,.32);
+}
+body:not(.light-theme) .header .navbar a.nav-contact:hover,
+body:not(.light-theme) #home .hero-primary:hover,
+body:not(.light-theme) #whatsapp-form button[type="submit"]:hover{
+  box-shadow:0 14px 40px rgba(255,54,93,.47);
+  filter:brightness(1.08);
+}
+body:not(.light-theme) .hero-eyebrow-mark{background:var(--ers-electric)}
+body:not(.light-theme) #home h1 span{
+  background:linear-gradient(105deg,#ffb7c3,var(--ers-electric) 55%,#ff879b);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+body:not(.light-theme) #contact .contact-aside{
+  background:
+    radial-gradient(ellipse at 0% 90%,rgba(255,54,93,.39),transparent 56%),
+    linear-gradient(145deg,#421322,#251525 64%,#151726);
+  border-color:rgba(255,104,127,.35);
+}
+body:not(.light-theme) #contact .contact-showcase #whatsapp-form{
+  background:linear-gradient(145deg,#242333,#171a27);
+  border-color:rgba(255,255,255,.15);
+}
+body:not(.light-theme) #contact #whatsapp-form input,
+body:not(.light-theme) #contact #whatsapp-form select,
+body:not(.light-theme) #contact #whatsapp-form textarea{
+  background:#12131f;color:white;
+}
+body:not(.light-theme) .team-carousel-dot.is-active{
+  background:var(--ers-electric);
+}
+.light-theme #about,.light-theme #services,.light-theme #vitrine,
+.light-theme #certificado,.light-theme #beneficios,.light-theme #team,
+.light-theme #faq,.light-theme #contact{
+  background-image:radial-gradient(ellipse at 92% 7%,rgba(255,54,93,.095),transparent 41%),
+    linear-gradient(145deg,#fff,#f6f4f7 68%,#fff8fa);
+  background-color:#faf9fb;
+}
+.light-theme #services,.light-theme #beneficios,.light-theme #faq{
+  background-image:radial-gradient(ellipse at 7% 30%,rgba(255,54,93,.07),transparent 47%),
+    linear-gradient(135deg,#f7f7fa,#fff 75%);
+}
+.light-theme #contact .contact-showcase #whatsapp-form{background:#fff}
+@media(prefers-reduced-motion:reduce){
+ body:not(.light-theme) .service-card,
+ body:not(.light-theme) .benefit-card{transition:none!important}
+}
