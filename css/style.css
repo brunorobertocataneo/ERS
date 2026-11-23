@@ -1349,3 +1349,102 @@ section h2{font-size:clamp(2.6rem,3.3vw,4.1rem);font-weight:800;line-height:1.16
 @keyframes ers-scroll-arrow{50%{transform:translateY(4px)}}
 @media(max-width:700px){.home-container .hero-ambient-one{width:75vw;height:75vw;right:-30%;top:0}.home-container .hero-ambient-two{width:65vw;height:65vw}#contact .quote-form-heading h3{font-size:2.1rem}}
 @media(prefers-reduced-motion:reduce){.home-container .hero-ambient,.hero-eyebrow-mark,.hero-scroll-cue span{animation:none!important}}
+
+/* ERS 2026-11-23 — correção visual evidente e formulário compacto */
+html,body{max-width:100%;overflow-x:clip}
+.home-container{
+  background-color:#100d16;
+  background-image:
+    radial-gradient(ellipse at 92% 19%,rgba(223,29,57,.63) 0%,rgba(165,23,51,.20) 24%,transparent 51%),
+    radial-gradient(ellipse at 1% 90%,rgba(174,17,45,.34),transparent 44%),
+    linear-gradient(103deg,rgba(9,10,18,.98) 0%,rgba(13,12,21,.87) 44%,rgba(23,12,25,.44) 100%),
+    url('../assets/bckg.jpg');
+  background-size:cover,cover,cover,cover;
+  background-position:center,center,center,center;
+}
+.home-container::before{
+  background:linear-gradient(180deg,transparent 65%,rgba(10,11,17,.52));
+}
+#home h1 span{
+  background:linear-gradient(105deg,#ffabb1 0%,#ff405b 50%,#ff7686 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+#contact{
+  background:
+    radial-gradient(ellipse at 7% 26%,rgba(214,31,59,.21),transparent 47%),
+    radial-gradient(ellipse at 96% 87%,rgba(158,24,51,.14),transparent 48%),
+    #111217;
+}
+#contact .contact-showcase{
+  width:min(100%,1160px);max-width:1160px;box-sizing:border-box;
+  display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  gap:clamp(16px,2.5vw,30px);align-items:start;
+  margin:26px auto 50px;
+}
+#contact .contact-aside{
+  min-width:0;box-sizing:border-box;
+  background:
+    radial-gradient(circle at 5% 90%,rgba(248,50,79,.31),transparent 45%),
+    linear-gradient(145deg,#471220 0%,#221620 70%,#181b23 100%);
+  border:1px solid rgba(253,101,123,.33);
+}
+#contact .contact-showcase #whatsapp-form{
+  box-sizing:border-box;min-width:0;width:100%;max-width:100%;
+  align-self:start;display:flex;flex-direction:column;gap:16px;
+  height:auto;min-height:0;margin:0;padding:clamp(20px,3vw,33px);
+  border:1px solid rgba(255,255,255,.15);border-radius:22px;
+  background:linear-gradient(145deg,#20232d,#171a22);
+  box-shadow:0 22px 55px rgba(0,0,0,.25);
+}
+#contact #whatsapp-form > div{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+#contact #whatsapp-form label{
+  margin-bottom:8px;font-size:1.12rem;line-height:1.35;color:#eceef3;
+}
+#contact #whatsapp-form input,
+#contact #whatsapp-form select,
+#contact #whatsapp-form textarea{
+  box-sizing:border-box;display:block;width:100%;max-width:100%;min-width:0;
+  margin:0;border:1px solid rgba(181,192,215,.22);
+  border-radius:11px;padding:12px 14px;
+  background:#12141b;color:#f9fafb;font-family:inherit;font-size:1.18rem;
+  box-shadow:none;
+}
+#contact #whatsapp-form input,#contact #whatsapp-form select{height:47px;min-height:47px}
+#contact #whatsapp-form textarea,
+#contact #whatsapp-form textarea#mensagem{
+  height:116px!important;min-height:116px!important;max-height:220px!important;
+  resize:vertical;flex:none!important;line-height:1.55;
+}
+#contact #whatsapp-form input:focus-visible,
+#contact #whatsapp-form select:focus-visible,
+#contact #whatsapp-form textarea:focus-visible{
+  border-color:#fa566b;outline:2px solid rgba(248,80,106,.48);outline-offset:1px;
+}
+#contact #whatsapp-form .quote-form-heading{margin:0 0 4px}
+#contact #whatsapp-form .quote-form-heading h3{margin:4px 0 6px}
+#contact #whatsapp-form .quote-form-heading p{margin:0;line-height:1.5}
+#contact #whatsapp-form .quote-type-hint{margin:7px 0 0;font-size:1.05rem}
+#contact #whatsapp-form .quote-form-privacy{margin:0;font-size:1.04rem}
+#contact #whatsapp-form button[type="submit"]{
+  box-sizing:border-box;min-height:50px;height:auto;
+  margin:0;padding:13px 16px;line-height:1.4;
+}
+.light-theme #contact{background:radial-gradient(ellipse at 8% 15%,rgba(220,38,38,.12),transparent 56%),#f6f6f8}
+.light-theme #contact .contact-showcase #whatsapp-form{
+  background:#fff;border-color:#e5e7eb;
+}
+.light-theme #contact #whatsapp-form input,
+.light-theme #contact #whatsapp-form textarea,
+.light-theme #contact #whatsapp-form select{
+  background:#f7f8fa!important;color:#16191f!important;border-color:#d9dde3!important;
+}
+.light-theme #contact #whatsapp-form label{color:#292e39}
+@media(max-width:850px){
+  #contact .contact-showcase{grid-template-columns:minmax(0,1fr);max-width:650px}
+  #contact .contact-aside{padding:25px}
+}
+@media(max-width:600px){
+  .home-container{background-position:center,center,center,63% center}
+  #contact .contact-showcase #whatsapp-form{padding:20px;gap:14px}
+  #contact #whatsapp-form textarea#mensagem{height:108px!important;min-height:108px!important}
+}
