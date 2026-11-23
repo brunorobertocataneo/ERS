@@ -83,7 +83,7 @@ if (whatsappForm) {
             'Telefone: ' + telefone,
             'Tipo de seguro: ' + modalidade,
             'Detalhes: ' + mensagem
-        ].join('\\n');
+        ].join('\n');
         const url = 'https://wa.me/5549984099411?text=' + encodeURIComponent(texto);
         // Não afirmar que foi enviado: o cliente deve confirmar no WhatsApp.
         window.location.href = url;
