@@ -303,26 +303,32 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// FAQ - Funcionalidade de expansão/colapso
-const faqItems = document.querySelectorAll('.faq-item');
-
+// FAQ acessível: transição suave com grid 0fr -> 1fr sem salto de altura.
+const faqItems = document.querySelectorAll('#faq .faq-item');
 faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
-    const toggle = item.querySelector('.faq-toggle');
-    
-    if (question && toggle) {
-        question.addEventListener('click', () => {
-            // Fechar outros itens abertos (opcional - comportamento accordion)
-            const currentlyActive = document.querySelector('.faq-item.active');
-            if (currentlyActive && currentlyActive !== item) {
-                currentlyActive.classList.remove('active');
-            }
-            
-            // Alternar o item atual
-            item.classList.toggle('active');
+    if (!question) return;
+    function toggleFaq() {
+        const opening = !item.classList.contains('active');
+        faqItems.forEach(other => {
+            other.classList.remove('active');
+            const otherQuestion = other.querySelector('.faq-question');
+            if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
         });
+        if (opening) {
+            item.classList.add('active');
+            question.setAttribute('aria-expanded', 'true');
+        }
     }
-}); 
+    question.addEventListener('click', toggleFaq);
+    question.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleFaq();
+        }
+    });
+});
+
 function openModal(event, type) {
   event.preventDefault(); // <- Isso evita que o link leve para o topo
 
