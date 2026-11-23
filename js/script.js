@@ -86,21 +86,83 @@ if (whatsappForm) {
     });
 }
 
-// Carrossel automático da equipe
-const carouselTrack = document.querySelector('.carousel-track');
-const carouselImgs = document.querySelectorAll('.carousel-img');
-let carouselIndex = 0;
-function showCarouselImage(idx) {
-    if (!carouselTrack) return;
-    carouselTrack.style.transform = `translateX(-${idx * 100}%)`;
-}
-function nextCarouselImage() {
-    carouselIndex = (carouselIndex + 1) % carouselImgs.length;
-    showCarouselImage(carouselIndex);
-}
-if (carouselTrack && carouselImgs.length > 0) {
-    setInterval(nextCarouselImage, 2500);
-    showCarouselImage(0);
+// Carrossel acessível e suave da equipe ERS
+const teamCarousel = document.querySelector('.team-carousel');
+if (teamCarousel) {
+    const track = teamCarousel.querySelector('.carousel-track');
+    const photos = Array.from(track.querySelectorAll('.carousel-img'));
+    const previous = teamCarousel.querySelector('.team-carousel-prev');
+    const next = teamCarousel.querySelector('.team-carousel-next');
+    const dotsContainer = teamCarousel.querySelector('.team-carousel-dots');
+    const counter = teamCarousel.querySelector('.team-carousel-counter');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let index = 0;
+    let timer = null;
+    let startX = null;
+    const dots = photos.map((_, i) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'team-carousel-dot';
+        button.setAttribute('aria-label', 'Mostrar foto ' + (i + 1));
+        dotsContainer.appendChild(button);
+        button.addEventListener('click', () => goTo(i));
+        return button;
+    });
+    function update() {
+        track.style.transform = 'translate3d(-' + (index * 100) + '%, 0, 0)';
+        counter.textContent = (index + 1) + ' / ' + photos.length;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === index);
+            dot.setAttribute('aria-current', String(i === index));
+        });
+        photos.forEach((photo, i) => photo.setAttribute('aria-hidden', String(i !== index)));
+    }
+    function pause() {
+        if (timer !== null) clearInterval(timer);
+        timer = null;
+    }
+    function play() {
+        pause();
+        if (document.hidden || reducedMotion.matches ||
+            teamCarousel.matches(':hover') || teamCarousel.matches(':focus-within')) return;
+        timer = setInterval(() => {
+            index = (index + 1) % photos.length;
+            update();
+        }, 5500);
+    }
+    function goTo(nextIndex) {
+        index = (nextIndex + photos.length) % photos.length;
+        update();
+        play();
+    }
+    previous.addEventListener('click', () => goTo(index - 1));
+    next.addEventListener('click', () => goTo(index + 1));
+    teamCarousel.addEventListener('mouseenter', pause);
+    teamCarousel.addEventListener('mouseleave', play);
+    teamCarousel.addEventListener('focusin', pause);
+    teamCarousel.addEventListener('focusout', () => requestAnimationFrame(play));
+    document.addEventListener('visibilitychange', play);
+    reducedMotion.addEventListener('change', play);
+    teamCarousel.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            goTo(index + (e.key === 'ArrowRight' ? 1 : -1));
+        }
+    });
+    teamCarousel.addEventListener('touchstart', e => {
+        startX = e.changedTouches[0].screenX;
+        pause();
+    }, {passive: true});
+    teamCarousel.addEventListener('touchend', e => {
+        if (startX !== null) {
+            const diff = e.changedTouches[0].screenX - startX;
+            if (Math.abs(diff) > 45) goTo(index + (diff < 0 ? 1 : -1));
+            startX = null;
+        }
+        play();
+    }, {passive: true});
+    update();
+    play();
 }
 
 // Pop-up LGPD
