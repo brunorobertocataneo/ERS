@@ -86,89 +86,87 @@ if (whatsappForm) {
     });
 }
 
-// Carrossel acessível e suave da equipe ERS
-const teamCarousel = document.querySelector('.team-carousel');
+// Carrossel ERS: três blocos, navegação manual e reprodução opcional
+const teamCarousel = document.querySelector('#team .team-carousel');
 if (teamCarousel) {
-    const track = teamCarousel.querySelector('.carousel-track');
-    const photos = Array.from(track.querySelectorAll('.carousel-img'));
-    const previous = teamCarousel.querySelector('.team-carousel-prev');
-    const next = teamCarousel.querySelector('.team-carousel-next');
-    const dotsContainer = teamCarousel.querySelector('.team-carousel-dots');
-    const counter = teamCarousel.querySelector('.team-carousel-counter');
+    const section = document.getElementById('team');
+    const photos = Array.from(teamCarousel.querySelectorAll('.carousel-img'));
+    const prev = section.querySelector('.team-carousel-prev');
+    const next = section.querySelector('.team-carousel-next');
+    const dotsContainer = section.querySelector('.team-carousel-dots');
+    const counter = section.querySelector('.team-carousel-counter');
+    const toggle = section.querySelector('.team-carousel-toggle');
+    const nameEl = section.querySelector('.team-person-name');
+    const roleEl = section.querySelector('.team-person-role');
+    const descriptionEl = section.querySelector('.team-person-description');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let index = 0;
+    // Preencher nomes, cargos e descrições reais quando a equipe fornecer os dados.
+    // Índices seguem a ordem das fotografias existentes no repositório.
+    const teamInfo = [];
+    let current = 0;
     let timer = null;
-    let startX = null;
+    let automatic = !reducedMotion.matches;
     const dots = photos.map((_, i) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'team-carousel-dot';
-        button.setAttribute('aria-label', 'Mostrar foto ' + (i + 1));
-        dotsContainer.appendChild(button);
-        button.addEventListener('click', () => goTo(i));
-        return button;
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'team-carousel-dot';
+        dot.setAttribute('aria-label', 'Ver colaborador ' + (i + 1));
+        dot.addEventListener('click', () => moveTo(i));
+        dotsContainer.appendChild(dot);
+        return dot;
     });
-    function update() {
-        // Composição em camadas: foto atual em destaque e vizinhas nas laterais.
+    function render() {
         photos.forEach((photo, i) => {
-            const previousIndex = (index - 1 + photos.length) % photos.length;
-            const nextIndex = (index + 1) % photos.length;
-            photo.classList.toggle('is-current', i === index);
-            photo.classList.toggle('is-previous', i === previousIndex);
-            photo.classList.toggle('is-next', i === nextIndex);
+            const active = i === current;
+            photo.classList.toggle('is-current', active);
+            photo.classList.remove('is-previous', 'is-next');
+            photo.setAttribute('aria-hidden', String(!active));
         });
-        counter.textContent = (index + 1) + ' / ' + photos.length;
         dots.forEach((dot, i) => {
-            dot.classList.toggle('is-active', i === index);
-            dot.setAttribute('aria-current', String(i === index));
+            dot.classList.toggle('is-active', i === current);
+            dot.setAttribute('aria-current', String(i === current));
         });
-        photos.forEach((photo, i) => photo.setAttribute('aria-hidden', String(i !== index)));
+        const info = teamInfo[current];
+        nameEl.textContent = info?.name || 'Colaborador ' + (current + 1);
+        roleEl.textContent = info?.role || 'Equipe ERS';
+        descriptionEl.textContent = info?.description || 'Conheça quem faz parte da nossa equipe e contribui para um atendimento próximo e de confiança.';
+        counter.textContent = (current + 1) + ' de ' + photos.length;
+        toggle.setAttribute('aria-pressed', String(automatic));
+        toggle.setAttribute('aria-label', automatic ? 'Pausar carrossel' : 'Ativar carrossel automático');
+        toggle.innerHTML = '<span aria-hidden="true">' + (automatic ? 'Ⅱ' : '▶') + '</span> ' + (automatic ? 'Pausar' : 'Automático');
     }
-    function pause() {
-        if (timer !== null) clearInterval(timer);
-        timer = null;
-    }
+    function stop() { if (timer !== null) clearInterval(timer); timer = null; }
     function play() {
-        pause();
-        if (document.hidden || reducedMotion.matches ||
-            teamCarousel.matches(':hover') || teamCarousel.matches(':focus-within')) return;
-        timer = setInterval(() => {
-            index = (index + 1) % photos.length;
-            update();
-        }, 5500);
+        stop();
+        if (!automatic || document.hidden || section.matches(':hover') || section.matches(':focus-within')) return;
+        timer = setInterval(() => { current = (current + 1) % photos.length; render(); }, 5500);
     }
-    function goTo(nextIndex) {
-        index = (nextIndex + photos.length) % photos.length;
-        update();
-        play();
-    }
-    previous.addEventListener('click', () => goTo(index - 1));
-    next.addEventListener('click', () => goTo(index + 1));
-    teamCarousel.addEventListener('mouseenter', pause);
-    teamCarousel.addEventListener('mouseleave', play);
-    teamCarousel.addEventListener('focusin', pause);
-    teamCarousel.addEventListener('focusout', () => requestAnimationFrame(play));
+    function moveTo(index) { current = (index + photos.length) % photos.length; render(); play(); }
+    prev.addEventListener('click', () => moveTo(current - 1));
+    next.addEventListener('click', () => moveTo(current + 1));
+    toggle.addEventListener('click', () => { automatic = !automatic; render(); play(); });
+    section.addEventListener('mouseenter', stop);
+    section.addEventListener('mouseleave', play);
+    section.addEventListener('focusin', stop);
+    section.addEventListener('focusout', () => requestAnimationFrame(play));
     document.addEventListener('visibilitychange', play);
-    reducedMotion.addEventListener('change', play);
-    teamCarousel.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-            e.preventDefault();
-            goTo(index + (e.key === 'ArrowRight' ? 1 : -1));
+    section.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            moveTo(current + (event.key === 'ArrowRight' ? 1 : -1));
         }
     });
-    teamCarousel.addEventListener('touchstart', e => {
-        startX = e.changedTouches[0].screenX;
-        pause();
-    }, {passive: true});
+    let startX = null;
+    teamCarousel.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; stop(); }, { passive: true });
     teamCarousel.addEventListener('touchend', e => {
         if (startX !== null) {
             const diff = e.changedTouches[0].screenX - startX;
-            if (Math.abs(diff) > 45) goTo(index + (diff < 0 ? 1 : -1));
-            startX = null;
+            if (Math.abs(diff) > 45) moveTo(current + (diff < 0 ? 1 : -1));
         }
+        startX = null;
         play();
-    }, {passive: true});
-    update();
+    }, { passive: true });
+    render();
     play();
 }
 
