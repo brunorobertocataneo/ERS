@@ -3,10 +3,10 @@
 <head>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/extends.css?v=redesign-20261123">
+    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-enhancements-3457">
 
     <!-- JavaScript -->
-    <script src="js/script.js?v=ers-team-20261123" defer></script>
+    <script src="js/script.js?v=ers-enhancements-3457" defer></script>
 
     <!-- Ícone -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/logo.png" type="image/x-icons">
@@ -24,22 +24,22 @@
 <body>
     <header class="header">
         <section>
-            <a href="#" class="logo">
+            <a href="#home" class="logo">
                 <img src="assets/logo.png" alt="logo">
             </a>
             <nav class="navbar" id="navbar">
-                <a href="#">Início</a>
+                <a href="#home">Início</a>
                 <a href="#about">Sobre</a>
                 <a href="#services">Serviços</a>
                 <a href="#team">Equipe</a>
                 <a href="#faq">FAQ</a>
                 <a href="#contact" class="nav-contact">Faça sua cotação ↗</a>
             </nav>
-            <div class="menu-toggle" id="menu-toggle">
+            <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navbar">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </section>
     </header>
 
@@ -265,6 +265,7 @@
     <section id="team">
         <div class="container">
             <span class="section-kicker">NOSSA EQUIPE</span><h2>Quem faz a ERS</h2>
+            <div class="team-stage">
             <div class="team-carousel" tabindex="0" aria-label="Carrossel de fotos da equipe ERS" aria-roledescription="carrossel">
                 <div class="carousel-track">
                     <img src="assets/team1.png" alt="Equipe 1" class="carousel-img" draggable="false" fetchpriority="high">
@@ -290,6 +291,7 @@
                     <span class="team-carousel-counter" aria-live="polite">1 / 15</span>
                 </div>
             </div>
+        </div><!-- team-stage -->
         </div>
     </section>
 
@@ -356,7 +358,19 @@
     <section id="contact">
         <div class="container">
             <span class="section-kicker">FALE COM A ERS</span><h2>Vamos cuidar do que importa?</h2><p class="section-lead">Conte com a nossa equipe para encontrar a proteção ideal.</p>
-            <form id="whatsapp-form">
+            <div class="contact-showcase">
+                <aside class="contact-aside" aria-label="Atendimento ERS">
+                    <span class="contact-aside-kicker">ATENDIMENTO HUMANIZADO</span>
+                    <h3>Seu próximo passo começa com uma conversa.</h3>
+                    <p>Conte o que você precisa proteger. Nossa equipe está pronta para entender sua necessidade e orientar sua cotação.</p>
+                    <div class="contact-aside-features">
+                        <div><span aria-hidden="true">✓</span> Atendimento personalizado</div>
+                        <div><span aria-hidden="true">✓</span> Diversas modalidades de seguros</div>
+                        <div><span aria-hidden="true">✓</span> Contato direto pelo WhatsApp</div>
+                    </div>
+                    <a class="contact-direct" href="https://wa.me/5549984099411" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp <span aria-hidden="true">↗</span></a>
+                </aside>
+                <form id="whatsapp-form">
                 <div>
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
@@ -371,6 +385,7 @@
                 </div>
                 <button type="submit" class="btn"> Enviar para WhatsApp</button>
             </form>
+            </div>
             <div class="location-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
                 <div class="location-card">
                     <div style="font-size: 2.2rem; color: var(--main-color); margin-bottom: 0.7rem; display: flex; align-items: center;"><span style="margin-right:0.5rem;">🏢</span> Matriz</div>
