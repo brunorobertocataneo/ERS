@@ -670,43 +670,99 @@ body.light-theme, .light-theme .footer {
     box-shadow: 0 0 0 3px rgba(220,38,38,0.3);
 }
 
+/* Carrossel de fotos da equipe ERS */
 .team-carousel {
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto 2rem auto;
-    overflow: hidden;
-    border-radius: 1.2rem;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-    background: var(--bg-alt);
+    width: min(100%, 920px);
+    margin: 0 auto 2.5rem;
     position: relative;
-    min-height: 440px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: var(--bg-alt);
+    box-shadow: 0 20px 54px rgba(0,0,0,.20);
+    isolation: isolate;
 }
 .carousel-track {
     display: flex;
-    transition: transform 0.7s cubic-bezier(.4,1.3,.6,1);
+    transition: transform .9s cubic-bezier(.22,1,.36,1);
     will-change: transform;
 }
 .carousel-img {
-    min-width: 100%;
-    max-width: 100%;
-    height: 440px;
-    object-fit: cover;
-    border-radius: 1.2rem;
-    background: #222;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    height: clamp(390px, 46vw, 570px);
+    display: block;
+    object-fit: contain;
+    background: #141821;
+    user-select: none;
 }
-@media (max-width: 600px) {
-    .team-carousel, .carousel-img {
-        min-height: 260px;
-        height: 260px;
-    }
+.team-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    background: rgba(12,18,30,.65);
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background .2s ease, transform .2s ease;
 }
-/* Tema claro para carrossel */
-.light-theme .team-carousel {
-    background: #fff;
-    box-shadow: 0 2px 16px rgba(220,38,38,0.08);
+.team-carousel-arrow:hover {
+    background: rgba(220,38,38,.9);
+    transform: translateY(-50%) scale(1.07);
 }
-
+.team-carousel-arrow:focus-visible,.team-carousel-dot:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.team-carousel-prev { left: 18px; }
+.team-carousel-next { right: 18px; }
+.team-carousel-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 16px 17px;
+    color: #fff;
+    background: linear-gradient(transparent,rgba(0,0,0,.66));
+}
+.team-carousel-dots { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 7px; }
+.team-carousel-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 20px;
+    background: rgba(255,255,255,.45);
+    cursor: pointer;
+    transition: width .3s ease, background .3s ease;
+}
+.team-carousel-dot.is-active { width: 23px; background: #fff; }
+.team-carousel-counter { font-size: .8rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.light-theme .team-carousel { background: #fff; box-shadow: 0 12px 34px rgba(0,0,0,.12); }
+@media(max-width:600px) {
+    .team-carousel { border-radius: 1rem; }
+    .carousel-img { height: clamp(300px,88vw,440px); }
+    .team-carousel-arrow { width: 38px; height: 38px; font-size: 19px; }
+    .team-carousel-prev { left: 8px; }
+    .team-carousel-next { right: 8px; }
+    .team-carousel-footer { gap: 10px; padding-bottom: 12px; }
+    .team-carousel-dots { gap: 5px; }
+    .team-carousel-dot { width: 7px; height: 7px; }
+    .team-carousel-dot.is-active { width: 16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .carousel-track,.team-carousel-arrow,.team-carousel-dot { transition: none; }
+}
 
 /* Pop-up LGPD */
 .lgpd-popup {
