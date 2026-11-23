@@ -1304,3 +1304,48 @@ section h2{font-size:clamp(2.6rem,3.3vw,4.1rem);font-weight:800;line-height:1.16
     box-sizing: border-box;
 }
 #team .team-showcase .carousel-img.is-current { opacity: 1; }
+
+
+/* ERS — opção 3, 5 e 6: hero, cotação orientada e ambientação */
+.home-container{isolation:isolate;overflow:hidden;background-image:linear-gradient(90deg,rgba(10,12,19,.97) 0%,rgba(10,12,19,.84) 52%,rgba(10,12,19,.55) 100%),url('../assets/bckg.jpg')}
+.home-container::before{z-index:0;pointer-events:none}
+.home-container .hero-ambient{position:absolute;z-index:0;pointer-events:none;border-radius:50%;filter:blur(72px);opacity:.55}
+.home-container .hero-ambient-one{width:min(52vw,700px);height:min(52vw,700px);top:-25%;right:-12%;background:radial-gradient(circle,rgba(234,44,65,.31),transparent 68%);animation:ers-ambient-drift 18s ease-in-out infinite alternate}
+.home-container .hero-ambient-two{width:min(38vw,480px);height:min(38vw,480px);bottom:-30%;left:-10%;background:radial-gradient(circle,rgba(173,34,53,.19),transparent 70%);animation:ers-ambient-drift 23s ease-in-out infinite alternate-reverse}
+#home{z-index:1}#home .content{position:relative}
+#home h1{filter:drop-shadow(0 14px 28px rgba(0,0,0,.25))}
+#home h1 span{background:linear-gradient(110deg,#ff8793 0%,#f74258 55%,#f86b78 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-eyebrow{gap:10px;backdrop-filter:blur(8px)}
+.hero-eyebrow-mark{width:8px;height:8px;border-radius:50%;background:#fb7185;box-shadow:0 0 14px rgba(251,113,133,.9);animation:ers-soft-pulse 3.4s ease-in-out infinite}
+#home .hero-actions .btn{transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,background .3s}
+#home .hero-actions .btn:hover{transform:translateY(-4px)}
+#home .hero-actions .hero-primary{box-shadow:0 10px 28px rgba(220,38,38,.25)}
+#home .hero-actions .hero-primary:hover{box-shadow:0 16px 38px rgba(220,38,38,.36)}
+.hero-scroll-cue{display:inline-flex;align-items:center;gap:12px;color:#d6d9e1;font-size:1.12rem;font-weight:600;margin-top:24px;letter-spacing:.015em;transition:color .2s}
+.hero-scroll-cue:hover{color:#fff}
+.hero-scroll-cue span{display:inline-grid;place-items:center;width:27px;height:27px;border:1px solid rgba(255,255,255,.35);border-radius:50%;animation:ers-scroll-arrow 3s ease-in-out infinite}
+#about,#services,#beneficios,#team,#faq,#contact{position:relative;isolation:isolate}
+#about::before,#beneficios::before,#contact::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 95% 30%,rgba(220,38,38,.055),transparent 46%)}
+#services::after,#team::before{content:'';position:absolute;pointer-events:none;z-index:-1;width:min(35vw,450px);height:450px;background:radial-gradient(circle,rgba(220,38,38,.075),transparent 72%);filter:blur(36px)}
+#services::after{right:0;top:15%}#team::before{left:0;top:25%}
+#services .service-card{box-shadow:0 14px 35px rgba(0,0,0,.15)}
+#contact .contact-showcase{position:relative}
+#contact .contact-showcase::before{content:'';position:absolute;inset:-14px;z-index:-1;border-radius:33px;background:radial-gradient(circle at 65% 10%,rgba(239,68,68,.12),transparent 55%);filter:blur(18px);pointer-events:none}
+#contact .quote-form-heading{margin-bottom:10px}
+#contact .quote-form-kicker{color:#ff8898;font-size:1.02rem;letter-spacing:.15em;font-weight:800}
+#contact .quote-form-heading h3{margin:8px 0;font-size:clamp(2.0rem,2.3vw,2.6rem);color:#fff}
+#contact .quote-form-heading p{color:#b9bfca;font-size:1.16rem;line-height:1.6}
+#contact #whatsapp-form select{width:100%;padding:14px 16px;min-height:48px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:#111319;color:#fff;font:inherit;font-size:1.28rem;cursor:pointer;appearance:auto}
+#contact #whatsapp-form select:focus-visible{outline:2px solid #f43f5e;outline-offset:2px}
+#contact .quote-type-hint{font-size:1.08rem;color:#aeb6c4;margin:8px 0 0;line-height:1.5}
+#contact .quote-form-privacy{color:#aeb4c0;font-size:1.07rem;line-height:1.55;text-align:center;margin:0}
+#contact #whatsapp-form button{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-weight:700}
+.light-theme #contact .quote-form-heading h3{color:#242936}
+.light-theme #contact .quote-form-heading p,.light-theme #contact .quote-type-hint,.light-theme #contact .quote-form-privacy{color:#555e6b}
+.light-theme #contact .quote-form-kicker{color:#be263a}
+.light-theme #contact #whatsapp-form select{background:#f7f8fa;color:#16191f;border:1px solid #d9dde3}
+@keyframes ers-ambient-drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-24px,20px,0) scale(1.07)}}
+@keyframes ers-soft-pulse{50%{opacity:.55;box-shadow:0 0 4px rgba(251,113,133,.4)}}
+@keyframes ers-scroll-arrow{50%{transform:translateY(4px)}}
+@media(max-width:700px){.home-container .hero-ambient-one{width:75vw;height:75vw;right:-30%;top:0}.home-container .hero-ambient-two{width:65vw;height:65vw}#contact .quote-form-heading h3{font-size:2.1rem}}
+@media(prefers-reduced-motion:reduce){.home-container .hero-ambient,.hero-eyebrow-mark,.hero-scroll-cue span{animation:none!important}}
