@@ -1781,3 +1781,238 @@ body:not(.light-theme) #certificado{
    transition:none!important;
  }
 }
+
+
+/* ERS | Tema claro 2.0 — interface completa, alta legibilidade e vermelho institucional */
+body.light-theme{
+  --ers-light-text:#202735;
+  --ers-light-muted:#555e70;
+  --ers-light-red:#ba1b29;
+  --ers-light-line:#e5e7ee;
+  color:var(--ers-light-text);
+  background:#f7f8fb;
+}
+body.light-theme #about,body.light-theme #services,body.light-theme #vitrine,
+body.light-theme #beneficios,body.light-theme #team,body.light-theme #faq,
+body.light-theme #contact{
+  background-color:#f7f8fb;
+  background-image:radial-gradient(ellipse at 89% 8%,rgba(185,28,28,.065),transparent 42%),linear-gradient(145deg,#fff 0%,#f7f8fb 65%,#f4f6fa 100%);
+  border-top:1px solid #edf0f5;
+}
+body.light-theme #services,body.light-theme #beneficios,body.light-theme #faq{
+  background-image:radial-gradient(ellipse at 9% 16%,rgba(185,28,28,.045),transparent 40%),linear-gradient(140deg,#f6f8fb,#fff 74%);
+}
+body.light-theme .home-container{
+  background-color:#f7f8fc;
+  background-image:linear-gradient(95deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.94) 48%,rgba(247,248,252,.78) 100%),url('../assets/bckg.jpg');
+}
+body.light-theme .home-container::before{background:radial-gradient(ellipse at 84% 33%,rgba(185,28,28,.10),transparent 47%)}
+body.light-theme #home h1{
+  color:#202631;text-shadow:none;
+  filter:none;
+}
+body.light-theme #home h1 span{
+  color:#ba1b29!important;
+  -webkit-text-fill-color:#ba1b29!important;
+}
+body.light-theme #home p{color:#525c69;text-shadow:none}
+body.light-theme #home .hero-eyebrow{
+  color:#991b1b;
+  background:rgba(220,38,38,.07);
+  border-color:rgba(185,28,28,.24);
+}
+body.light-theme #home .hero-primary,
+body.light-theme .header .navbar a.nav-contact,
+body.light-theme #whatsapp-form button[type="submit"]{
+  background:linear-gradient(110deg,#b91c1c,#dc2626 62%,#ef4444);
+  color:white;
+  border:1px solid rgba(185,28,28,.34);
+  box-shadow:0 10px 25px rgba(185,28,28,.16);
+}
+body.light-theme #home .hero-secondary{
+  color:#9f1824;background:#fff;
+  border:1px solid #e7bfc4;
+}
+body.light-theme #home .hero-secondary:hover{background:#fff2f3;color:#86141d}
+body.light-theme .hero-trust>span{
+  color:#414b59;background:#fff;border:1px solid #e5e8ef;box-shadow:0 4px 14px rgba(23,34,48,.04);
+}
+body.light-theme .hero-trust strong{color:#ad1826}
+body.light-theme .hero-scroll-cue{color:#575f6d}
+body.light-theme .hero-scroll-cue span{border-color:#d9a5aa}
+body.light-theme .header,body.light-theme .header.is-scrolled{
+  background:rgba(255,255,255,.96);
+  border-color:#e5e7ed;
+  box-shadow:0 9px 35px rgba(23,34,48,.11);
+}
+body.light-theme .header .navbar a:not(.nav-contact){color:#384252}
+body.light-theme .header .navbar a.active:not(.nav-contact),
+body.light-theme .header .navbar a:not(.nav-contact):hover{color:#ad1929}
+body.light-theme .header .navbar{background:#fff}
+body.light-theme .header .menu-toggle span{background:#b91c1c}
+body.light-theme section h2:not(.team-top-title){
+  color:#202631;
+  -webkit-text-fill-color:#202631;
+}
+body.light-theme .section-kicker{color:#b91c1c}
+body.light-theme .section-lead,
+body.light-theme #about p{color:#555f6c}
+body.light-theme #about p:last-child{color:#a91a29}
+body.light-theme .service-card,
+body.light-theme .benefit-card,
+body.light-theme .faq-item,
+body.light-theme .location-card{
+  color:#222a37;
+  background:#fff;
+  border:1px solid #e4e7ef;
+  box-shadow:0 13px 32px rgba(30,40,55,.055);
+}
+body.light-theme .service-card:hover,
+body.light-theme .benefit-card:hover{
+  border-color:#d7a3a9;
+  box-shadow:0 17px 40px rgba(153,27,27,.095);
+}
+body.light-theme .service-card h3,
+body.light-theme .benefit-card h3,
+body.light-theme .faq-question h3{color:#222b39}
+body.light-theme .service-card p,
+body.light-theme .benefit-card p,
+body.light-theme .faq-answer p{color:#505d6a}
+body.light-theme .service-icon{
+  color:#b91c1c;
+  background:#fff0f0;
+  border:1px solid #f0cdcf;
+}
+body.light-theme #vitrine h3{color:#252c38}
+body.light-theme #vitrine .carousel-container{background:transparent}
+body.light-theme #certificado .certificado-wrapper{
+  background:linear-gradient(135deg,#fff 0%,#fafbfe 62%,#fff4f4);
+  border:1px solid #e9d9dc;
+  box-shadow:0 18px 48px rgba(36,44,60,.08);
+}
+body.light-theme .home-container-certificado{
+  background:linear-gradient(135deg,#f7f8fb,#fff 62%,#f7f8fc);
+}
+body.light-theme #certificado .service-card1 h2{
+  color:#202735!important;-webkit-text-fill-color:#202735!important;
+}
+body.light-theme #certificado .service-card1 li{color:#364151}
+body.light-theme #certificado .service-card1 li::before{color:#b91c1c}
+body.light-theme #certificado .service-card1 p{color:#626b78}
+body.light-theme #team .team-top-title{
+  color:#b91c1c!important;-webkit-text-fill-color:#b91c1c!important;
+}
+body.light-theme #team .team-top-title::before,
+body.light-theme #team .team-top-title::after{
+  background:linear-gradient(90deg,transparent,#b91c1c);
+}
+body.light-theme #team .team-showcase{
+  border:1px solid #e4d1d7;
+  box-shadow:0 20px 44px rgba(35,40,50,.09);
+}
+body.light-theme #team .team-intro{
+  background:linear-gradient(145deg,#6b1220,#3b1721);
+}
+body.light-theme #team .team-intro h3,
+body.light-theme #team .team-intro p,
+body.light-theme #team .team-total strong,
+body.light-theme #team .team-total small{color:white}
+body.light-theme #team .team-intro h3 strong{color:#ff8b92}
+body.light-theme #team .team-profile{
+  background:#fff;color:#253041;
+}
+body.light-theme #team .team-person-name{color:#202631}
+body.light-theme #team .team-person-role{color:#fff;background:#ba1b29}
+body.light-theme #team .team-person-description,
+body.light-theme #team .team-carousel-counter{color:#555f6e}
+body.light-theme #team .team-profile-controls{border-top:1px solid #e4e7ed}
+body.light-theme #team .team-carousel-arrow{
+  color:#2b3444;background:#f5f6f9;border:1px solid #d9dde6;
+}
+body.light-theme #team .team-carousel-arrow:hover{background:#eceff4}
+body.light-theme #team .team-carousel-dot{background:#d6dbe4}
+body.light-theme #team .team-carousel-dot.is-active{background:#b91c1c}
+body.light-theme #team .team-carousel-toggle{
+  background:#fff;color:#a31828;border:1px solid #bd3342;
+}
+body.light-theme #team .team-carousel-toggle:hover{background:#fff1f1}
+body.light-theme #faq .faq-item.active{
+  background:#fff;border-color:#d9a4aa;box-shadow:0 12px 32px rgba(100,35,45,.075);
+}
+body.light-theme #faq .faq-question:hover{background:#fbf1f2}
+body.light-theme #faq .faq-toggle{color:#b91c1c}
+body.light-theme #contact .container{
+  background:transparent;color:#242b36;
+}
+body.light-theme #contact .contact-aside{
+  background:linear-gradient(135deg,#fff,#fff6f6);
+  border:1px solid #edd3d7;
+  box-shadow:0 13px 32px rgba(50,40,60,.055);
+}
+body.light-theme #contact .contact-aside h3{color:#242b36}
+body.light-theme #contact .contact-aside p{color:#505d69}
+body.light-theme #contact .contact-aside-kicker{color:#ae1c2c}
+body.light-theme #contact .contact-aside-features{color:#394452}
+body.light-theme #contact .contact-aside-features span{
+  color:#b91c1c;background:#fbe7e9;
+}
+body.light-theme #contact a.contact-direct{
+  color:#fff;background:#b91c1c;border-color:#b91c1c;
+}
+body.light-theme #contact .contact-showcase #whatsapp-form{
+  background:#fff;border:1px solid #e3e6ed;
+  box-shadow:0 17px 42px rgba(30,40,55,.07);
+}
+body.light-theme #contact .quote-form-heading h3{color:#222b39}
+body.light-theme #contact .quote-form-heading p,
+body.light-theme #contact .quote-type-hint,
+body.light-theme #contact .quote-form-privacy{color:#596371}
+body.light-theme #contact .quote-form-kicker{color:#af1c2b}
+body.light-theme #contact #whatsapp-form label{
+  color:#303b4a!important;
+}
+body.light-theme #contact #whatsapp-form input,
+body.light-theme #contact #whatsapp-form textarea,
+body.light-theme #contact #whatsapp-form select{
+  background:#f9fafc!important;
+  color:#202a39!important;
+  border:1px solid #d8dde6!important;
+}
+body.light-theme #contact #whatsapp-form input::placeholder,
+body.light-theme #contact #whatsapp-form textarea::placeholder{color:#778191}
+body.light-theme #contact #whatsapp-form input:focus-visible,
+body.light-theme #contact #whatsapp-form textarea:focus-visible,
+body.light-theme #contact #whatsapp-form select:focus-visible{
+  outline:2px solid rgba(185,28,28,.44);outline-offset:1px;
+}
+body.light-theme .location-card .location-address{color:#525c6a}
+body.light-theme .location-card .location-phone{color:#a51926}
+body.light-theme #contact .container > p{color:#525c69}
+body.light-theme #contact .container > p a{color:#a51926}
+body.light-theme .footer{
+  background:#fff;color:#505968;
+  border-top:1px solid #e4e7ee;
+}
+body.light-theme .footer h3,body.light-theme .footer h4{color:#222b39}
+body.light-theme .footer p,body.light-theme .footer-copy{color:#596575}
+body.light-theme .footer a,body.light-theme .footer-links a{color:#a51929}
+body.light-theme .footer a:hover{color:#78101b}
+#theme-toggle{
+  background:#fff!important;color:#b91c1c!important;
+  border:1px solid #e1e4ea!important;
+  box-shadow:0 8px 28px rgba(16,24,40,.20)!important;
+}
+body.light-theme #theme-toggle{
+  background:#252a35!important;color:#fff!important;
+  border:1px solid #414859!important;
+}
+#theme-toggle:focus-visible{
+  outline:3px solid #ef4444;outline-offset:4px;
+}
+@media(max-width:800px){
+  body.light-theme .header .navbar{
+    background:#fff;
+    border:1px solid #e4e7ed;
+    box-shadow:0 17px 30px rgba(20,25,40,.1);
+  }
+}
