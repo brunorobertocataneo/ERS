@@ -3,12 +3,12 @@
 <head>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-team-photo-zoom-20261123">
+    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-hero-quote-ambient-20261123">
     <!-- CSS principal carregado diretamente para evitar cache dos @imports -->
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-team-photo-zoom-20261123">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-hero-quote-ambient-20261123">
 
     <!-- JavaScript -->
-    <script src="js/script.js?v=ers-team-3panel-final" defer></script>
+    <script src="js/script.js?v=ers-hero-quote-ambient-20261123" defer></script>
 
     <!-- Ícone -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/logo.png" type="image/x-icons">
@@ -45,14 +45,14 @@
         </section>
     </header>
 
-    <div class="home-container">
+    <div class="home-container"><div class="hero-ambient hero-ambient-one" aria-hidden="true"></div><div class="hero-ambient hero-ambient-two" aria-hidden="true"></div>
         <section id="home">
             <div class="content">
-<span class="hero-eyebrow">ERS CORRETORA DE SEGUROS · DESDE 1995</span>
+<span class="hero-eyebrow"><span class="hero-eyebrow-mark" aria-hidden="true"></span> ERS CORRETORA DE SEGUROS · DESDE 1995</span>
 <h1>Proteção para o que <span>realmente importa.</span></h1>
 <p>Seguros para você, sua família e seu negócio. Atendimento próximo, experiência e soluções pensadas para cada momento da sua vida.</p>
 <div class="hero-actions"><a href="#contact" class="btn hero-primary">Solicitar cotação ↗</a><a href="#services" class="btn hero-secondary">Conhecer os seguros →</a></div>
-<div class="hero-trust"><span>Desde <strong>1995</strong></span><span>Atendimento personalizado</span><span>Videira – SC e região</span></div>
+<div class="hero-trust"><span>Desde <strong>1995</strong></span><span>Atendimento personalizado</span><span>Videira – SC e região</span></div><a class="hero-scroll-cue" href="#about">Conheça a ERS <span aria-hidden="true">↓</span></a>
 </div>
         </section>
     </div>
@@ -391,20 +391,37 @@
                     </div>
                     <a class="contact-direct" href="https://wa.me/5549984099411" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp <span aria-hidden="true">↗</span></a>
                 </aside>
-                <form id="whatsapp-form">
+                <form id="whatsapp-form"><div class="quote-form-heading"><span class="quote-form-kicker">SOLICITAÇÃO DE COTAÇÃO</span><h3>Como podemos ajudar?</h3><p>Escolha uma modalidade e envie sua solicitação para nossa equipe.</p></div>
                 <div>
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <label for="nome">Seu nome</label>
+                    <input type="text" id="nome" name="nome" autocomplete="name" required>
                 </div>
                 <div>
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" name="telefone" required>
+                    <label for="tipo-seguro">Tipo de seguro</label>
+                    <select id="tipo-seguro" name="tipo-seguro" required>
+                        <option value="" selected disabled>Selecione a modalidade</option>
+                        <option value="Automóvel">Automóvel</option>
+                        <option value="Moto">Moto</option>
+                        <option value="Caminhão e transporte">Caminhão e transporte</option>
+                        <option value="Residencial">Residencial</option>
+                        <option value="Vida e acidentes pessoais">Vida e acidentes pessoais</option>
+                        <option value="Empresarial">Empresarial</option>
+                        <option value="Rural">Rural</option>
+                        <option value="Viagem">Viagem</option>
+                        <option value="Certificado digital">Certificado digital</option>
+                        <option value="Outro seguro / orientação">Outro seguro / orientação</option>
+                    </select>
+                    <p class="quote-type-hint" id="quote-type-hint" aria-live="polite">Selecione uma modalidade para personalizar sua solicitação.</p>
                 </div>
                 <div>
-                    <label for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                    <label for="telefone">Telefone com DDD</label>
+                    <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" required>
                 </div>
-                <button type="submit" class="btn"> Enviar para WhatsApp</button>
+                <div>
+                    <label for="mensagem">Detalhes da sua solicitação</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco do que precisa. Não informe CPF, documentos ou dados bancários aqui." required></textarea>
+                </div>
+                <p class="quote-form-privacy">Sua solicitação será aberta no WhatsApp para você conferir e enviar.</p><button type="submit" class="btn">Continuar no WhatsApp <span aria-hidden="true">↗</span></button>
             </form>
             </div>
             <div class="location-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
