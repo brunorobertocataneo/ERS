@@ -1732,3 +1732,52 @@ body:not(.light-theme) #certificado{
  #certificado .service-card1{padding:9px;gap:13px}
  #certificado .service-card1 .btn{width:100%}
 }
+
+/* ERS — FAQ com abertura contínua, sem max-height arbitrário */
+#faq .faq-item{
+  overflow:hidden;
+  transition:border-color .3s ease,box-shadow .3s ease,background-color .3s ease;
+}
+#faq .faq-item.active{
+  border-color:rgba(220,38,38,.48);
+  box-shadow:0 12px 34px rgba(0,0,0,.16);
+}
+#faq .faq-question{
+  user-select:none;
+  transition:background-color .25s ease;
+}
+#faq .faq-question:focus-visible{
+  outline:2px solid #ef4444;outline-offset:-3px;
+}
+#faq .faq-toggle{
+  display:inline-grid;place-items:center;
+  width:28px;height:28px;flex:none;
+  transition:transform .38s cubic-bezier(.2,.8,.2,1);
+}
+#faq .faq-answer,
+#faq .faq-item.active .faq-answer{
+  display:grid;
+  grid-template-rows:0fr;
+  max-height:none;
+  padding:0 23px;
+  overflow:hidden;
+  transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1),padding .45s cubic-bezier(.22,1,.36,1);
+}
+#faq .faq-item.active .faq-answer{
+  grid-template-rows:1fr;
+  padding-bottom:20px;
+}
+#faq .faq-answer-inner{
+  min-height:0;
+  overflow:hidden;
+}
+#faq .faq-answer-inner p{
+  margin:0;
+  line-height:1.7;
+  overflow-wrap:break-word;
+}
+@media(prefers-reduced-motion:reduce){
+ #faq .faq-answer,#faq .faq-item.active .faq-answer,#faq .faq-toggle{
+   transition:none!important;
+ }
+}
