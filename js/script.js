@@ -49,40 +49,44 @@ if (menuToggle && navbar) {
     });
 }
 
-// Formulário WhatsApp
+// Cotação WhatsApp: dados apresentados ao usuário para envio manual
 const whatsappForm = document.getElementById('whatsapp-form');
 if (whatsappForm) {
-    whatsappForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        
-        // Adicionar estado de loading
-        submitButton.classList.add('loading');
-        submitButton.disabled = true;
-        
-        var nome = document.getElementById('nome').value;
-        var telefone = document.getElementById('telefone').value;
-        var mensagem = document.getElementById('mensagem').value;
-        var texto = encodeURIComponent('Olá, meu nome é ' + nome + '%0AContato: ' + telefone + '%0A' + mensagem);
-        var numero = '5549984099411';
-        
-        // Simular um pequeno delay para mostrar o loading
-        setTimeout(() => {
-            window.open('https://wa.me/' + numero + '?text=' + texto, '_blank');
-            
-            // Restaurar o botão
-            submitButton.classList.remove('loading');
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-            
-            // Limpar o formulário
-            this.reset();
-            
-            // Mostrar notificação de sucesso
-            showNotification('Formulário enviado com sucesso!', 'success');
-        }, 1000);
+    const insuranceType = document.getElementById('tipo-seguro');
+    const insuranceHint = document.getElementById('quote-type-hint');
+    const descriptions = {
+        'Automóvel':'Conte o modelo do veículo e o tipo de proteção que procura.',
+        'Moto':'Conte o modelo da moto e qual cobertura deseja.',
+        'Caminhão e transporte':'Descreva se precisa proteger o veículo, a carga ou ambos.',
+        'Residencial':'Conte se o seguro é para casa ou apartamento.',
+        'Vida e acidentes pessoais':'Conte que tipo de proteção deseja conhecer.',
+        'Empresarial':'Conte o ramo de atuação e a necessidade da empresa.',
+        'Rural':'Conte o que deseja proteger na sua atividade rural.',
+        'Viagem':'Informe o destino e o período aproximado da viagem.',
+        'Certificado digital':'Conte qual tipo de certificado deseja conhecer.',
+        'Outro seguro / orientação':'Explique brevemente o que você procura.'
+    };
+    insuranceType.addEventListener('change', () => {
+        insuranceHint.textContent = descriptions[insuranceType.value] || 'Descreva sua necessidade.';
+    });
+    whatsappForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        if (!this.reportValidity()) return;
+        const nome = document.getElementById('nome').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+        const mensagem = document.getElementById('mensagem').value.trim();
+        const modalidade = insuranceType.value;
+        const texto = [
+            'Olá, equipe ERS! Gostaria de solicitar uma cotação.',
+            '',
+            'Nome: ' + nome,
+            'Telefone: ' + telefone,
+            'Tipo de seguro: ' + modalidade,
+            'Detalhes: ' + mensagem
+        ].join('\\n');
+        const url = 'https://wa.me/5549984099411?text=' + encodeURIComponent(texto);
+        // Não afirmar que foi enviado: o cliente deve confirmar no WhatsApp.
+        window.location.href = url;
     });
 }
 
