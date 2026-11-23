@@ -10,6 +10,12 @@ function setTheme(light) {
         body.classList.remove('light-theme');
         themeIcon.textContent = '☀️';
     }
+    if (themeToggle) {
+        themeToggle.setAttribute('aria-pressed', String(light));
+        const nextAction = light ? 'Ativar tema escuro' : 'Ativar tema claro';
+        themeToggle.setAttribute('aria-label', nextAction);
+        themeToggle.setAttribute('title', nextAction);
+    }
 }
 if (themeToggle && themeIcon) {
     themeToggle.addEventListener('click', () => {
