@@ -109,7 +109,14 @@ if (teamCarousel) {
         return button;
     });
     function update() {
-        track.style.transform = 'translate3d(-' + (index * 100) + '%, 0, 0)';
+        // Composição em camadas: foto atual em destaque e vizinhas nas laterais.
+        photos.forEach((photo, i) => {
+            const previousIndex = (index - 1 + photos.length) % photos.length;
+            const nextIndex = (index + 1) % photos.length;
+            photo.classList.toggle('is-current', i === index);
+            photo.classList.toggle('is-previous', i === previousIndex);
+            photo.classList.toggle('is-next', i === nextIndex);
+        });
         counter.textContent = (index + 1) + ' / ' + photos.length;
         dots.forEach((dot, i) => {
             dot.classList.toggle('is-active', i === index);
