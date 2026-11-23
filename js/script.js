@@ -110,9 +110,84 @@ if (teamCarousel) {
     const roleEl = section.querySelector('.team-person-role');
     const descriptionEl = section.querySelector('.team-person-description');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    // Preencher nomes, cargos e descrições reais quando a equipe fornecer os dados.
-    // Índices seguem a ordem das fotografias existentes no repositório.
-    const teamInfo = [];
+    // Integrantes na ordem das 15 fotografias do carrossel.
+    const teamInfo = [
+            {
+                    "name": "Heinz",
+                    "role": "Vendedor · Cotação",
+                    "description": "Atendimento comercial e elaboração de cotações de seguros."
+            },
+            {
+                    "name": "Talia",
+                    "role": "Emissão",
+                    "description": "Atuação na emissão de seguros e documentação relacionada."
+            },
+            {
+                    "name": "Ubirajara",
+                    "role": "Vendedor · Cotação",
+                    "description": "Atendimento comercial e elaboração de cotações de seguros."
+            },
+            {
+                    "name": "Luiz",
+                    "role": "Vendedor · Cotação",
+                    "description": "Atendimento comercial e elaboração de cotações de seguros."
+            },
+            {
+                    "name": "Jenesi",
+                    "role": "Sinistro",
+                    "description": "Atendimento e acompanhamento de solicitações de sinistro."
+            },
+            {
+                    "name": "Juliano",
+                    "role": "Vendedor · Cotação",
+                    "description": "Atendimento comercial e elaboração de cotações de seguros."
+            },
+            {
+                    "name": "Felipe",
+                    "role": "Vendedor · Cotação",
+                    "description": "Atendimento comercial e elaboração de cotações de seguros."
+            },
+            {
+                    "name": "Franciele",
+                    "role": "Atendimento",
+                    "description": "Atendimento e orientação aos clientes da ERS Seguros."
+            },
+            {
+                    "name": "Kethllyn",
+                    "role": "Certificação Digital",
+                    "description": "Atendimento relacionado a certificados digitais."
+            },
+            {
+                    "name": "Simone",
+                    "role": "Certificação Digital",
+                    "description": "Atendimento relacionado a certificados digitais."
+            },
+            {
+                    "name": "Gustavo",
+                    "role": "Vendedor · Cotação",
+                    "description": "Atendimento comercial e elaboração de cotações de seguros."
+            },
+            {
+                    "name": "Paulo",
+                    "role": "Vendedor",
+                    "description": "Atendimento comercial da ERS Seguros."
+            },
+            {
+                    "name": "Bruno",
+                    "role": "Vendedor",
+                    "description": "Atendimento comercial da ERS Seguros."
+            },
+            {
+                    "name": "Kamily",
+                    "role": "Certificação Digital",
+                    "description": "Atendimento relacionado a certificados digitais."
+            },
+            {
+                    "name": "Adri",
+                    "role": "Cotação",
+                    "description": "Atuação na elaboração de cotações de seguros."
+            }
+    ];
     let current = 0;
     let timer = null;
     let automatic = !reducedMotion.matches;
@@ -120,7 +195,7 @@ if (teamCarousel) {
         const dot = document.createElement('button');
         dot.type = 'button';
         dot.className = 'team-carousel-dot';
-        dot.setAttribute('aria-label', 'Ver colaborador ' + (i + 1));
+        dot.setAttribute('aria-label', 'Ver ' + (teamInfo[i]?.name || 'colaborador ' + (i + 1)));
         dot.addEventListener('click', () => moveTo(i));
         dotsContainer.appendChild(dot);
         return dot;
