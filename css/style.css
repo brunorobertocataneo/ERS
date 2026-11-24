@@ -2576,3 +2576,47 @@ body.light-theme .footer .footer-copy{color:#657080!important}
 @media(prefers-reduced-motion:reduce){
  .home-container{transition:none!important}
 }
+
+/* ERS | Visual premium, atendimento e experiência móvel 2026 */
+#services .service-card{display:flex;flex-direction:column;align-items:flex-start;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s!important}
+#services .service-card:hover{transform:translateY(-7px);border-color:rgba(239,68,68,.48);box-shadow:0 24px 48px rgba(9,9,16,.18)}
+#services .service-card .service-icon{transition:transform .4s}
+#services .service-card:hover .service-icon{transform:translateY(-3px) rotate(-5deg)}
+#services .service-more{display:inline-flex;gap:9px;align-items:center;margin-top:auto;padding-top:21px;font-size:1.19rem;font-weight:800;text-decoration:none;color:#ff92a0;transition:gap .2s,color .2s}
+#services .service-more:hover{gap:15px;color:#fff}
+body.light-theme #services .service-more{color:#a51d2b}
+body.light-theme #services .service-more:hover{color:#74111f}
+#como-funciona{background:transparent!important;border:0!important;position:relative;isolation:isolate}
+#como-funciona .process-container{max-width:1280px;text-align:center}
+#como-funciona h2{max-width:810px;margin:12px auto 19px;text-wrap:balance}
+#como-funciona .section-lead{max-width:710px;margin:0 auto 38px}
+#como-funciona .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;text-align:left}
+#como-funciona .process-step{display:flex;flex-direction:column;gap:11px;min-height:255px;padding:clamp(22px,2.6vw,34px);border-radius:24px;background:linear-gradient(145deg,rgba(34,37,51,.93),rgba(22,24,35,.96));border:1px solid rgba(255,255,255,.11);box-shadow:0 14px 38px rgba(7,8,14,.1);transition:transform .38s cubic-bezier(.22,1,.36,1),border-color .32s,box-shadow .32s}
+#como-funciona .process-step:hover{transform:translateY(-6px);border-color:rgba(239,68,68,.45);box-shadow:0 20px 40px rgba(5,6,12,.17)}
+#como-funciona .process-step-number{color:#fc8090;font-size:1.17rem;letter-spacing:.14em;font-weight:900}
+#como-funciona .process-ico{display:grid;place-items:center;width:47px;height:47px;border-radius:15px;background:rgba(239,68,68,.14);color:#ff8593;font-size:2.1rem}
+#como-funciona .process-step h3{margin:5px 0 0;font-size:clamp(1.63rem,1.8vw,2.1rem);line-height:1.25;color:#fff}
+#como-funciona .process-step p{font-size:1.19rem;line-height:1.7;color:#cdd1db}
+#como-funciona .process-cta{display:inline-flex;gap:12px;align-items:center;justify-content:center;margin-top:32px;padding:15px 26px;border-radius:13px;background:linear-gradient(110deg,#b91c1c,#ed3946);color:#fff;font-size:1.3rem;font-weight:800;box-shadow:0 12px 30px rgba(220,38,38,.17);transition:transform .26s,box-shadow .26s}
+#como-funciona .process-cta:hover{transform:translateY(-3px);box-shadow:0 16px 37px rgba(220,38,38,.25)}
+body.light-theme #como-funciona .process-step{background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(255,248,250,.97));border-color:rgba(143,47,60,.15);box-shadow:0 14px 30px rgba(40,41,62,.07)}
+body.light-theme #como-funciona .process-step h3{color:#283041}
+body.light-theme #como-funciona .process-step p{color:#555e6b}
+body.light-theme #como-funciona .process-step-number,body.light-theme #como-funciona .process-ico{color:#b91c1c}
+body.light-theme #como-funciona .process-ico{background:#fce7eb}
+.ers-mobile-bar{display:none}
+@media(max-width:1100px){#como-funciona .process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#como-funciona .process-step{min-height:225px}}
+@media(max-width:800px){
+ body{padding-bottom:calc(75px + env(safe-area-inset-bottom))!important}
+ .ers-mobile-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:fixed;inset:auto 0 0;z-index:9996;min-height:68px;padding:6px 12px calc(6px + env(safe-area-inset-bottom));border-top:1px solid rgba(239,68,68,.32);background:rgba(18,20,29,.97);box-shadow:0 -9px 28px rgba(0,0,0,.18);backdrop-filter:blur(14px)}
+ .ers-mobile-bar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:11px;min-height:52px;color:#f3f4f7;font-size:1.05rem;font-weight:750;text-decoration:none}
+ .ers-mobile-bar a span{font-size:1.8rem;line-height:1.1;color:#ff8590}
+ .ers-mobile-bar a:hover,.ers-mobile-bar a:focus-visible{background:rgba(239,68,68,.14)}
+ body.light-theme .ers-mobile-bar{background:rgba(255,255,255,.97);border-top-color:rgba(185,28,28,.25)}
+ body.light-theme .ers-mobile-bar a{color:#2a3040}
+ body.light-theme .ers-mobile-bar a span{color:#b91c1c}
+ #whatsapp-button{display:none!important}
+ #theme-toggle{bottom:calc(89px + env(safe-area-inset-bottom))!important}
+}
+@media(max-width:600px){#como-funciona .process-grid{grid-template-columns:1fr}#como-funciona .process-step{min-height:0;padding:24px}#como-funciona .process-cta{width:100%}#services .service-card:hover,#como-funciona .process-step:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){#services .service-card,#services .service-icon,#como-funciona .process-step,#como-funciona .process-cta{transition:none!important;transform:none!important}}
