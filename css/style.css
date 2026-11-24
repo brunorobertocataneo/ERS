@@ -2187,3 +2187,28 @@ body.light-theme #avaliacoes .reviews-counter{color:#556170}
 @media(prefers-reduced-motion:reduce) {
   #avaliacoes .reviews-track{transition:none}
 }
+
+/* ERS | Carrossel de avaliações v3: renderização por páginas, sem scroll/transform */
+#avaliacoes .reviews-slider{width:100%;overflow:visible}
+#avaliacoes .reviews-track{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ align-items:stretch;
+ width:100%;
+ gap:20px;
+ overflow:visible!important;
+ transform:none!important;
+ transition:none!important;
+ padding:4px 0 20px;
+}
+#avaliacoes .review-card{
+ width:100%;
+ min-width:0;
+ flex:none;
+ animation:ersReviewIn .28s ease both;
+}
+#avaliacoes .review-card[hidden]{display:none!important}
+@keyframes ersReviewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:980px){#avaliacoes .reviews-track{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:630px){#avaliacoes .reviews-track{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){#avaliacoes .review-card{animation:none}}
