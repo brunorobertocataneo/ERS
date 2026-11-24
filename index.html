@@ -3,12 +3,12 @@
 <head>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-reviews-carousel-fixed-20261124">
+    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-reviews-independent-v3-20261124">
     <!-- CSS principal carregado diretamente para evitar cache dos @imports -->
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-reviews-carousel-fixed-20261124">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-reviews-independent-v3-20261124">
 
     <!-- JavaScript -->
-    <script src="js/script.js?v=ers-reviews-carousel-fixed-20261124" defer></script>
+    <script src="js/script.js?v=ers-reviews-independent-v3-20261124" defer></script>
 
     <!-- Ícone -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/logo.png" type="image/x-icons">
@@ -376,6 +376,59 @@
             </div>
         </div>
     </section>
+<script>
+/* Carrossel ERS: páginas de depoimentos independentes do script principal. */
+(function () {
+  var root = document.getElementById('avaliacoes');
+  if (!root) return;
+  var cards = Array.prototype.slice.call(root.querySelectorAll('.review-card'));
+  var prev = root.querySelector('.reviews-prev');
+  var next = root.querySelector('.reviews-next');
+  var counter = root.querySelector('.reviews-counter');
+  var viewport = root.querySelector('.reviews-slider');
+  if (!cards.length || !prev || !next || !counter || !viewport) return;
+
+  var start = 0;
+  var touchX = null;
+  var touchY = null;
+  function perPage() {
+    return window.innerWidth <= 630 ? 1 : window.innerWidth <= 980 ? 2 : 3;
+  }
+  function render() {
+    var count = perPage();
+    start = Math.max(0, Math.min(start, Math.max(0, cards.length - count)));
+    cards.forEach(function(card, i) {
+      card.hidden = i < start || i >= start + count;
+    });
+    counter.textContent = (start + 1) + '–' + Math.min(start + count, cards.length) + ' de ' + cards.length;
+    prev.disabled = start === 0;
+    next.disabled = start + count >= cards.length;
+  }
+  function go(direction) {
+    start += direction * perPage();
+    render();
+  }
+  prev.addEventListener('click', function () { go(-1); });
+  next.addEventListener('click', function () { go(1); });
+  viewport.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); go(-1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); go(1); }
+  });
+  viewport.addEventListener('touchstart', function(event) {
+    touchX = event.changedTouches[0].screenX;
+    touchY = event.changedTouches[0].screenY;
+  }, { passive:true });
+  viewport.addEventListener('touchend', function(event) {
+    if (touchX === null) return;
+    var dx = event.changedTouches[0].screenX - touchX;
+    var dy = event.changedTouches[0].screenY - touchY;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
+    touchX = null; touchY = null;
+  }, { passive:true });
+  window.addEventListener('resize', render, { passive:true });
+  render();
+})();
+</script>
 
     <section id="faq">
         <div class="container">
