@@ -517,3 +517,35 @@ window.onclick = function(event) {
         }));
     }
 })();
+
+// Avaliações do Google Maps: navegação horizontal por card, sem autoplay
+(() => {
+  const root=document.getElementById('avaliacoes');
+  if(!root)return;
+  const track=root.querySelector('.reviews-track');
+  const cards=Array.from(root.querySelectorAll('.review-card'));
+  const prev=root.querySelector('.reviews-prev');
+  const next=root.querySelector('.reviews-next');
+  const counter=root.querySelector('.reviews-counter');
+  const scrollToCard=(index)=>{
+    const i=Math.max(0,Math.min(index,cards.length-1));
+    track.scrollTo({left:cards[i].offsetLeft-cards[0].offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  };
+  const currentIndex=()=>{
+    const first=cards[0];
+    if(!first)return 0;
+    const step=cards.length>1?cards[1].offsetLeft-first.offsetLeft:first.getBoundingClientRect().width;
+    return Math.max(0,Math.min(cards.length-1,Math.round(track.scrollLeft/Math.max(step,1))));
+  };
+  const sync=()=>{
+    const i=currentIndex();
+    counter.textContent=(i+1)+' de '+cards.length;
+    prev.disabled=i===0;
+    next.disabled=track.scrollLeft>=track.scrollWidth-track.clientWidth-4;
+  };
+  prev.addEventListener('click',()=>scrollToCard(currentIndex()-1));
+  next.addEventListener('click',()=>scrollToCard(currentIndex()+1));
+  track.addEventListener('scroll',sync,{passive:true});
+  window.addEventListener('resize',sync,{passive:true});
+  sync();
+})();
