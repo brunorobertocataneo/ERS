@@ -2337,3 +2337,28 @@ body.light-theme #certificado .service-card1 li::before{color:#f87171}
   max-height:none!important;
  }
 }
+
+/* ERS — emblema transparente HD: sem máscara nem desfoque */
+#certificado .bg-certificado-fixa {
+  display:block;
+  width:100%!important;
+  max-width:540px!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:4/3;
+  object-fit:contain;
+  border-radius:0!important;
+  filter:none!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+  mix-blend-mode:normal;
+  image-rendering:auto;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+@media(max-width:760px){
+ #certificado .bg-certificado-fixa{
+  max-width:min(100%,440px)!important;
+  aspect-ratio:4/3;
+ }
+}
