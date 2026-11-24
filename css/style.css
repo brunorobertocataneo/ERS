@@ -2302,3 +2302,38 @@ section[id]{scroll-margin-top:88px}
  .motion-ready #team .team-showcase.reveal-item,
  .motion-ready #avaliacoes .reviews-pager.reveal-item{opacity:1!important;transform:none!important;transition:none!important}
 }
+
+/* ERS — nova arte do certificado: escudo/documento com segurança digital */
+#certificado .certificado-wrapper{
+ background:linear-gradient(115deg,#1a1b27 0%,#161723 54%,#14131d 100%);
+ border-color:rgba(239,68,68,.35);
+ box-shadow:0 24px 70px rgba(10,12,20,.26);
+}
+#certificado .bg-certificado-fixa{
+ width:100%!important;
+ max-width:510px!important;
+ max-height:none!important;
+ aspect-ratio:440 / 385;
+ object-fit:contain;
+ filter:none!important;
+ border-radius:20px;
+ -webkit-mask-image:radial-gradient(ellipse 73% 72% at 50% 50%,#000 64%,transparent 100%);
+ mask-image:radial-gradient(ellipse 73% 72% at 50% 50%,#000 64%,transparent 100%);
+}
+body.light-theme #certificado .certificado-wrapper{
+ background:linear-gradient(115deg,#1b1e2b,#171823 58%,#21131c)!important;
+ border-color:rgba(190,45,58,.33)!important;
+ box-shadow:0 22px 60px rgba(30,34,52,.19)!important;
+}
+body.light-theme #certificado .service-card1 h2{
+ color:#fff!important;-webkit-text-fill-color:#fff!important;
+}
+body.light-theme #certificado .service-card1 li{color:#e9ebf2!important}
+body.light-theme #certificado .service-card1 p{color:#bfc3ce!important}
+body.light-theme #certificado .service-card1 li::before{color:#f87171}
+@media(max-width:760px){
+ #certificado .bg-certificado-fixa{
+  max-width:min(100%,430px)!important;
+  max-height:none!important;
+ }
+}
