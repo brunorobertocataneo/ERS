@@ -2362,3 +2362,69 @@ body.light-theme #certificado .service-card1 li::before{color:#f87171}
   aspect-ratio:4/3;
  }
 }
+
+/* ERS — superfície contínua: as seções compartilham o mesmo fundo */
+body{
+  background-color:#11131b;
+  background-image:
+    radial-gradient(ellipse 55% 14% at 84% 19%,rgba(153,27,42,.11),transparent 100%),
+    radial-gradient(ellipse 63% 17% at 6% 46%,rgba(68,55,86,.12),transparent 100%),
+    radial-gradient(ellipse 59% 16% at 91% 72%,rgba(147,34,49,.095),transparent 100%),
+    linear-gradient(180deg,#12141d 0%,#161720 35%,#14151d 69%,#10121a 100%);
+  background-repeat:no-repeat;
+}
+body.light-theme{
+  background-color:#f7f8fb;
+  background-image:
+    radial-gradient(ellipse 55% 15% at 93% 19%,rgba(185,28,28,.055),transparent 100%),
+    radial-gradient(ellipse 63% 18% at 8% 43%,rgba(73,99,143,.065),transparent 100%),
+    radial-gradient(ellipse 60% 17% at 90% 74%,rgba(185,28,28,.045),transparent 100%),
+    linear-gradient(180deg,#fafbfc 0%,#f6f8fb 39%,#fafbfc 70%,#f7f8fa 100%);
+  background-repeat:no-repeat;
+}
+/* Sem faixas, bordas ou fundos independentes entre os blocos de conteúdo. */
+body #about,body #services,body #vitrine,body #beneficios,
+body #team,body #avaliacoes,body #faq,body #contact,
+body #certificado,body .home-container-certificado,
+body.light-theme #about,body.light-theme #services,
+body.light-theme #vitrine,body.light-theme #beneficios,
+body.light-theme #team,body.light-theme #avaliacoes,
+body.light-theme #faq,body.light-theme #contact,
+body.light-theme #certificado,body.light-theme .home-container-certificado{
+  background:transparent!important;
+  background-image:none!important;
+  background-color:transparent!important;
+  border-top:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+body #about,body #services,body #vitrine,body #beneficios,
+body #team,body #avaliacoes,body #faq,body #contact,
+body #certificado{
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+/* Os próprios cards mantêm contraste e profundidade. */
+body #contact .container,body.light-theme #contact .container{
+  background:transparent!important;
+  background-image:none!important;
+}
+body .home-container-certificado{
+  padding-top:clamp(32px,4vw,64px)!important;
+  padding-bottom:clamp(32px,4vw,64px)!important;
+}
+/* O rodapé encerra a composição sem uma borda horizontal abrupta. */
+body .footer{
+  border-top:0!important;
+  background:linear-gradient(to bottom,rgba(16,18,26,0),#10121a 38%)!important;
+}
+body.light-theme .footer{
+  background:linear-gradient(to bottom,rgba(247,248,250,0),#f7f8fa 45%)!important;
+}
+@media(max-width:600px){
+  body .home-container-certificado{padding-top:28px!important;padding-bottom:28px!important}
+}
+/* Mantém a preferência do usuário por menos animação. */
+@media(prefers-reduced-motion:reduce){
+  body,body.light-theme{background-attachment:scroll}
+}
