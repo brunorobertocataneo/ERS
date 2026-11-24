@@ -2269,3 +2269,36 @@ body.light-theme #avaliacoes .reviews-arrow:not(.reviews-disabled):hover{backgro
 @media(prefers-reduced-motion:reduce){
  #avaliacoes .reviews-page{animation:none!important}
 }
+
+/* ERS | Rolagem 2.0: aparição fluida e leve */
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+section[id]{scroll-margin-top:88px}
+.motion-ready .reveal-item{
+  opacity:0;
+  transform:translate3d(0,20px,0);
+  transition-property:opacity,transform;
+  transition-duration:.7s,.8s;
+  transition-timing-function:ease,cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--reveal-delay,0ms);
+  backface-visibility:hidden;
+}
+.motion-ready .reveal-item.is-visible{opacity:1;transform:translate3d(0,0,0)}
+.motion-ready #certificado .bg-certificado-fixa.reveal-item{transform:translate3d(24px,0,0)}
+.motion-ready #certificado .bg-certificado-fixa.reveal-item.is-visible{transform:translate3d(0,0,0)!important}
+.motion-ready #team .team-showcase.reveal-item,
+.motion-ready #avaliacoes .reviews-pager.reveal-item{transform:translate3d(0,14px,0)}
+.motion-ready #team .team-showcase.reveal-item.is-visible,
+.motion-ready #avaliacoes .reviews-pager.reveal-item.is-visible{transform:translate3d(0,0,0)}
+@media(max-width:800px){
+ html{scroll-padding-top:82px}
+ section[id]{scroll-margin-top:82px}
+ .motion-ready .reveal-item{transform:translate3d(0,12px,0);transition-duration:.55s,.65s;transition-delay:0ms}
+ .motion-ready #certificado .bg-certificado-fixa.reveal-item{transform:translate3d(0,12px,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ .motion-ready .reveal-item,
+ .motion-ready #certificado .bg-certificado-fixa.reveal-item,
+ .motion-ready #team .team-showcase.reveal-item,
+ .motion-ready #avaliacoes .reviews-pager.reveal-item{opacity:1!important;transform:none!important;transition:none!important}
+}
