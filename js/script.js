@@ -518,34 +518,79 @@ window.onclick = function(event) {
     }
 })();
 
-// Avaliações do Google Maps: navegação horizontal por card, sem autoplay
+// Carrossel de depoimentos: movimento por transform (sem depender de scroll horizontal).
 (() => {
-  const root=document.getElementById('avaliacoes');
-  if(!root)return;
-  const track=root.querySelector('.reviews-track');
-  const cards=Array.from(root.querySelectorAll('.review-card'));
-  const prev=root.querySelector('.reviews-prev');
-  const next=root.querySelector('.reviews-next');
-  const counter=root.querySelector('.reviews-counter');
-  const scrollToCard=(index)=>{
-    const i=Math.max(0,Math.min(index,cards.length-1));
-    track.scrollTo({left:cards[i].offsetLeft-cards[0].offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
-  };
-  const currentIndex=()=>{
-    const first=cards[0];
-    if(!first)return 0;
-    const step=cards.length>1?cards[1].offsetLeft-first.offsetLeft:first.getBoundingClientRect().width;
-    return Math.max(0,Math.min(cards.length-1,Math.round(track.scrollLeft/Math.max(step,1))));
-  };
-  const sync=()=>{
-    const i=currentIndex();
-    counter.textContent=(i+1)+' de '+cards.length;
-    prev.disabled=i===0;
-    next.disabled=track.scrollLeft>=track.scrollWidth-track.clientWidth-4;
-  };
-  prev.addEventListener('click',()=>scrollToCard(currentIndex()-1));
-  next.addEventListener('click',()=>scrollToCard(currentIndex()+1));
-  track.addEventListener('scroll',sync,{passive:true});
-  window.addEventListener('resize',sync,{passive:true});
-  sync();
+  const section = document.getElementById('avaliacoes');
+  if (!section) return;
+  const viewport = section.querySelector('.reviews-slider');
+  const track = section.querySelector('.reviews-track');
+  const cards = Array.from(track.querySelectorAll('.review-card'));
+  const prev = section.querySelector('.reviews-prev');
+  const next = section.querySelector('.reviews-next');
+  const counter = section.querySelector('.reviews-counter');
+  if (!viewport || !cards.length || !prev || !next || !counter) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let index = 0;
+  let startX = null;
+  let startY = null;
+
+  function visibleCount() {
+    if (window.innerWidth <= 630) return 1;
+    if (window.innerWidth <= 980) return 2;
+    return 3;
+  }
+
+  function maxIndex() {
+    return Math.max(0, cards.length - visibleCount());
+  }
+
+  function moveTo(nextIndex) {
+    index = Math.max(0, Math.min(maxIndex(), nextIndex));
+    update();
+  }
+
+  function update() {
+    index = Math.min(index, maxIndex());
+    // Medidas reais, incluindo o espaçamento definido no CSS.
+    const first = cards[0];
+    const nextCard = cards[1];
+    const step = nextCard
+      ? nextCard.getBoundingClientRect().left - first.getBoundingClientRect().left
+      : first.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const measuredStep = step > 0 ? step : first.getBoundingClientRect().width + gap;
+    track.style.transform = 'translate3d(' + (-index * measuredStep) + 'px,0,0)';
+    track.style.transitionDuration = reduceMotion.matches ? '0ms' : '550ms';
+    counter.textContent = (index + 1) + '–' + Math.min(index + visibleCount(), cards.length) + ' de ' + cards.length;
+    prev.disabled = index === 0;
+    next.disabled = index >= maxIndex();
+  }
+
+  prev.addEventListener('click', () => moveTo(index - 1));
+  next.addEventListener('click', () => moveTo(index + 1));
+  viewport.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      event.preventDefault();
+      moveTo(index + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+  });
+  viewport.addEventListener('touchstart', event => {
+    startX = event.changedTouches[0].screenX;
+    startY = event.changedTouches[0].screenY;
+  }, { passive: true });
+  viewport.addEventListener('touchend', event => {
+    if (startX === null) return;
+    const dx = event.changedTouches[0].screenX - startX;
+    const dy = event.changedTouches[0].screenY - startY;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+      moveTo(index + (dx < 0 ? 1 : -1));
+    }
+    startX = null;
+    startY = null;
+  }, { passive: true });
+
+  window.addEventListener('resize', update, { passive: true });
+  reduceMotion.addEventListener('change', update);
+  update();
 })();
