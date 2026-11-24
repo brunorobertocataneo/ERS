@@ -499,6 +499,7 @@ window.onclick = function(event) {
             '#about .container > h2', '#about .container > p',
             '#services .container > .section-kicker', '#services .container > h2',
             '#services .container > .section-lead', '#services .service-card',
+            '#como-funciona .section-kicker', '#como-funciona h2', '#como-funciona .section-lead', '#como-funciona .process-step',
             '#vitrine .container > h2', '#vitrine .container > .section-kicker',
             '#certificado .service-card1', '#certificado .bg-certificado-fixa',
             '#beneficios .container > .section-kicker', '#beneficios .container > h2',
