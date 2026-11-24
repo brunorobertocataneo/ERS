@@ -2620,3 +2620,18 @@ body.light-theme #como-funciona .process-ico{background:#fce7eb}
 }
 @media(max-width:600px){#como-funciona .process-grid{grid-template-columns:1fr}#como-funciona .process-step{min-height:0;padding:24px}#como-funciona .process-cta{width:100%}#services .service-card:hover,#como-funciona .process-step:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){#services .service-card,#services .service-icon,#como-funciona .process-step,#como-funciona .process-cta{transition:none!important;transform:none!important}}
+
+/* Revisão UX: foco legível e controles tocáveis */
+#avaliacoes .reviews-arrow:focus-visible,
+#services .service-more:focus-visible,
+#como-funciona .process-cta:focus-visible,
+.ers-mobile-bar a:focus-visible{
+  outline:3px solid #ff9daa!important;
+  outline-offset:4px!important;
+}
+#avaliacoes .reviews-arrow{min-height:45px;min-width:45px}
+#services .service-card .service-more{min-height:44px;align-items:center;padding-block:11px;margin-top:auto}
+.ers-mobile-bar a{touch-action:manipulation}
+@media(prefers-reduced-motion:reduce){
+  #avaliacoes .reviews-page{animation:none!important}
+}
