@@ -3,12 +3,12 @@
 <head>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-mobile-dropdown-anchor-20261124">
+    <link rel="stylesheet" type="text/css" href="css/extends.css?v=ers-final-section-responsive-fix-20261124">
     <!-- CSS principal carregado diretamente para evitar cache dos @imports -->
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-mobile-dropdown-anchor-20261124">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=ers-final-section-responsive-fix-20261124">
 
     <!-- JavaScript -->
-    <script src="js/script.js?v=ers-mobile-dropdown-anchor-20261124" defer></script>
+    <script src="js/script.js?v=ers-final-section-responsive-fix-20261124" defer></script>
 
     <!-- Ícone -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/logo.png" type="image/x-icons">
@@ -485,33 +485,37 @@
                 <p class="quote-form-privacy">Sua solicitação será aberta no WhatsApp para você conferir e enviar.</p><button type="submit" class="btn">Continuar no WhatsApp <span aria-hidden="true">↗</span></button>
             </form>
             </div>
-            <div class="location-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
-                <div class="location-card">
-                    <div style="font-size: 2.2rem; color: var(--main-color); margin-bottom: 0.7rem; display: flex; align-items: center;"><span style="margin-right:0.5rem;">🏢</span> Matriz</div>
-                    <div class="location-address">Rua Farroupilha, 300<br>Bairro Farroupilha<br>Videira – SC</div>
-                    <div class="location-phone">(49) 3566-1375</div>
-                </div>
-                <div class="location-card">
-                    <div style="font-size: 2.2rem; color: var(--main-color); margin-bottom: 0.7rem; display: flex; align-items: center;"><span style="margin-right:0.5rem;">🏬</span> Filial Entre Rios – Guarapuava-PR</div>
-                    <div class="location-address">Rua Padre Josef Stefan, 321<br>Entre Rios – Colônia Vitória<br>Guarapuava – PR</div>
-                    <div class="location-phone">(42) 99923-8153<br>(42) 99923-6213</div>
-                </div>
-            </div>
-            <p>Email: comercial@ersseguros.com.br</p>
-            <p>ERS Seguros 2025. Todos os direitos reservados.</p>
-            <p>
-               <a href="#" onclick="openModal(event, 'terms')">Termos de Uso</a> |
-               <a href="#" onclick="openModal(event, 'privacy')">Política de Privacidade</a>
-            </p>
-
-<div id="modal" class="modal">
+            <div class="location-grid" aria-label="Unidades da ERS Seguros">
+  <article class="location-card">
+    <h3 class="location-title"><span aria-hidden="true">🏢</span> Matriz · Videira</h3>
+    <p class="location-address">Rua Farroupilha, 300<br>Bairro Farroupilha<br>Videira – SC</p>
+    <a class="location-phone" href="tel:+554935661375">(49) 3566-1375</a>
+  </article>
+  <article class="location-card">
+    <h3 class="location-title"><span aria-hidden="true">🏬</span> Filial · Entre Rios</h3>
+    <p class="location-address">Rua Padre Josef Stefan, 321<br>Entre Rios – Colônia Vitória<br>Guarapuava – PR</p>
+    <div class="location-phones">
+      <a class="location-phone" href="tel:+5542999238153">(42) 99923-8153</a>
+      <a class="location-phone" href="tel:+5542999236213">(42) 99923-6213</a>
+    </div>
+  </article>
+</div>
+<div class="contact-bottom-links">
+  <a href="mailto:comercial@ersseguros.com.br">comercial@ersseguros.com.br</a>
+  <span aria-hidden="true">·</span>
+  <a href="#" onclick="openModal(event, 'terms')">Termos de Uso</a>
+  <span aria-hidden="true">·</span>
+  <a href="#" onclick="openModal(event, 'privacy')">Política de Privacidade</a>
+</div>
+</div>
+</section>
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Informações legais">
   <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+    <button class="close" type="button" onclick="closeModal()" aria-label="Fechar janela">&times;</button>
     <div id="modal-text"></div>
   </div>
 </div>
-        </div>
-    </section>
+
 
     <footer class="footer">
         <div class="footer-container">
@@ -523,7 +527,7 @@
                 <a href="https://wa.me/5549984099411" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="margin-right:1rem;">WhatsApp</a>
             </div>
             <div class="footer-copy">
-                &copy; 2025 ERS Seguros. Todos os direitos reservados. Desenvolvido por Bruno Roberto Cataneo
+                &copy; 2026 ERS Seguros. Todos os direitos reservados. Desenvolvido por Bruno Roberto Cataneo
             </div>
         </div>
     </footer>
