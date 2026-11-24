@@ -492,28 +492,46 @@ window.onclick = function(event) {
         syncMenu();
     }
 
+    // Entrada progressiva do conteúdo; animar uma única vez.
     const motionDisabled = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!motionDisabled && 'IntersectionObserver' in window) {
-        const items = document.querySelectorAll('#about .container > *, #services .container > .section-kicker, #services .container > h2, #services .container > .section-lead, #services .service-card, #beneficios .benefit-card, #team .container > *, #faq .faq-item, #contact .container > .section-kicker, #contact .container > h2, #contact .container > .section-lead, #contact .contact-showcase');
-        const revealObserver = new IntersectionObserver(entries => {
+        const selector = [
+            '#about .container > h2', '#about .container > p',
+            '#services .container > .section-kicker', '#services .container > h2',
+            '#services .container > .section-lead', '#services .service-card',
+            '#vitrine .container > h2', '#vitrine .container > .section-kicker',
+            '#certificado .service-card1', '#certificado .bg-certificado-fixa',
+            '#beneficios .container > .section-kicker', '#beneficios .container > h2',
+            '#beneficios .benefit-card', '#team .team-top-title', '#team .team-showcase',
+            '#avaliacoes .reviews-container > .section-kicker',
+            '#avaliacoes .reviews-container > h2', '#avaliacoes .reviews-container > .section-lead',
+            '#avaliacoes .reviews-topline', '#avaliacoes .reviews-pager',
+            '#faq .container > .section-kicker', '#faq .container > h2', '#faq .faq-item',
+            '#contact .container > .section-kicker', '#contact .container > h2',
+            '#contact .container > .section-lead', '#contact .contact-showcase'
+        ].join(', ');
+        const items = Array.from(document.querySelectorAll(selector));
+        const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 entry.target.classList.add('is-visible');
-                revealObserver.unobserve(entry.target);
+                observer.unobserve(entry.target);
             });
-        }, {threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-        items.forEach((element,i) => {
-            element.classList.add('reveal-item');
-            // Pequeno intervalo apenas dentro da grade de cards.
-            if (element.classList.contains('service-card') || element.classList.contains('benefit-card')) {
-                element.style.setProperty('--reveal-delay', (i % 3)*75 + 'ms');
+        }, { threshold: 0.06, rootMargin: '0px 0px -36px 0px' });
+        items.forEach(element => {
+            if (element.matches('.service-card, .benefit-card, .faq-item')) {
+                const siblings = Array.from(element.parentElement.children).filter(el =>
+                    el.matches('.service-card, .benefit-card, .faq-item'));
+                element.style.setProperty('--reveal-delay', ((siblings.indexOf(element) % 3) * 85) + 'ms');
             }
-            revealObserver.observe(element);
+            element.classList.add('reveal-item');
+            if (element.getBoundingClientRect().top < window.innerHeight * 0.88) {
+                element.classList.add('is-visible');
+            } else {
+                observer.observe(element);
+            }
         });
         document.body.classList.add('motion-ready');
-        // Conteúdo já visível deve aparecer imediatamente.
-        requestAnimationFrame(() => items.forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight * 0.9) el.classList.add('is-visible');
-        }));
     }
+
 })();
