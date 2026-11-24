@@ -2363,24 +2363,28 @@ body.light-theme #certificado .service-card1 li::before{color:#f87171}
  }
 }
 
-/* ERS — superfície contínua: as seções compartilham o mesmo fundo */
+/* ERS — degradê contínuo e marcante, sem dividir as seções em faixas */
 body{
-  background-color:#11131b;
+  background-color:#11121b;
   background-image:
-    radial-gradient(ellipse 55% 14% at 84% 19%,rgba(153,27,42,.11),transparent 100%),
-    radial-gradient(ellipse 63% 17% at 6% 46%,rgba(68,55,86,.12),transparent 100%),
-    radial-gradient(ellipse 59% 16% at 91% 72%,rgba(147,34,49,.095),transparent 100%),
-    linear-gradient(180deg,#12141d 0%,#161720 35%,#14151d 69%,#10121a 100%);
+    radial-gradient(ellipse 85% 19% at 90% 15%,rgba(219,38,58,.30),transparent 74%),
+    radial-gradient(ellipse 82% 22% at 1% 37%,rgba(98,40,79,.32),transparent 75%),
+    radial-gradient(ellipse 83% 21% at 94% 62%,rgba(190,30,49,.28),transparent 75%),
+    radial-gradient(ellipse 78% 20% at 8% 86%,rgba(74,55,101,.27),transparent 78%),
+    linear-gradient(180deg,#12131c 0%,#231722 24%,#161b2a 48%,#271721 72%,#121520 100%);
   background-repeat:no-repeat;
+  background-size:100% 100%;
 }
 body.light-theme{
-  background-color:#f7f8fb;
+  background-color:#f8f6f8;
   background-image:
-    radial-gradient(ellipse 55% 15% at 93% 19%,rgba(185,28,28,.055),transparent 100%),
-    radial-gradient(ellipse 63% 18% at 8% 43%,rgba(73,99,143,.065),transparent 100%),
-    radial-gradient(ellipse 60% 17% at 90% 74%,rgba(185,28,28,.045),transparent 100%),
-    linear-gradient(180deg,#fafbfc 0%,#f6f8fb 39%,#fafbfc 70%,#f7f8fa 100%);
+    radial-gradient(ellipse 87% 20% at 95% 17%,rgba(229,78,85,.23),transparent 77%),
+    radial-gradient(ellipse 80% 23% at 4% 41%,rgba(124,142,184,.23),transparent 76%),
+    radial-gradient(ellipse 87% 22% at 95% 66%,rgba(218,59,74,.20),transparent 78%),
+    radial-gradient(ellipse 79% 19% at 4% 87%,rgba(164,153,188,.18),transparent 78%),
+    linear-gradient(180deg,#fffafa 0%,#f5e8ec 23%,#edf1f9 49%,#f8e9ee 74%,#faf9fc 100%);
   background-repeat:no-repeat;
+  background-size:100% 100%;
 }
 /* Sem faixas, bordas ou fundos independentes entre os blocos de conteúdo. */
 body #about,body #services,body #vitrine,body #beneficios,
