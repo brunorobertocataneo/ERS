@@ -536,3 +536,28 @@ window.onclick = function(event) {
     }
 
 })();
+
+/* UX: ativar setas de avaliações pelo teclado como botões acessíveis */
+(() => {
+    const reviews = document.getElementById('avaliacoes');
+    if (!reviews) return;
+    reviews.querySelectorAll('label.reviews-arrow[for]').forEach(arrow => {
+        arrow.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            const target = document.getElementById(arrow.htmlFor);
+            if (!target) return;
+            target.checked = true;
+            target.dispatchEvent(new Event('change', { bubbles:true }));
+            const panel = arrow.closest('.reviews-page');
+            const direction = arrow.classList.contains('reviews-next') ? 1 : -1;
+            const pages = Array.from(reviews.querySelectorAll('.reviews-page'));
+            const destination = pages[pages.indexOf(panel) + direction];
+            if (destination) {
+                const nextButton = destination.querySelector('.reviews-' + (direction > 0 ? 'next' : 'prev') + '[tabindex]');
+                const fallback = destination.querySelector('.reviews-arrow[tabindex]');
+                (nextButton || fallback)?.focus({ preventScroll:true });
+            }
+        });
+    });
+})();
