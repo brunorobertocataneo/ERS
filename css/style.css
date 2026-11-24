@@ -2092,3 +2092,62 @@ body.light-theme .benefit-card:hover{
   background-image:linear-gradient(90deg,rgba(255,255,255,.96),rgba(255,255,255,.88) 65%,rgba(255,255,255,.72)),url('../assets/bckg.jpg');
  }
 }
+
+/* ERS — avaliações reais encaminhadas pelo usuário, cartão responsivo */
+#avaliacoes{position:relative;background:linear-gradient(145deg,#10131d,#1b121b 65%,#10121b);border-top:1px solid rgba(255,255,255,.07)}
+#avaliacoes .reviews-container{max-width:1280px}
+#avaliacoes h2{color:#fff;-webkit-text-fill-color:#fff}
+#avaliacoes .reviews-topline{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:8px 0 23px}
+#avaliacoes .reviews-google-label{font-size:1.14rem;color:#bec4d0}
+#avaliacoes .reviews-google-label span{color:#fbbf24;margin-right:7px}
+#avaliacoes .reviews-google-link{display:inline-flex;align-items:center;gap:5px;color:#fda4ad;font-size:1.16rem;font-weight:700;text-decoration:none}
+#avaliacoes .reviews-google-link:hover{text-decoration:underline;color:#fff}
+#avaliacoes .reviews-slider{position:relative;overflow:hidden;min-width:0}
+#avaliacoes .reviews-track{
+ display:flex;gap:20px;overflow-x:auto;overflow-y:hidden;
+ scroll-snap-type:x mandatory;scroll-padding:2px;
+ scroll-behavior:smooth;overscroll-behavior-x:contain;
+ scrollbar-width:none;padding:4px 2px 19px;
+}
+#avaliacoes .reviews-track::-webkit-scrollbar{display:none}
+#avaliacoes .review-card{
+ flex:0 0 calc((100% - 40px)/3);min-width:0;box-sizing:border-box;
+ scroll-snap-align:start;min-height:285px;
+ border:1px solid rgba(255,255,255,.16);border-radius:20px;
+ padding:clamp(18px,2vw,27px);
+ background:linear-gradient(145deg,#232632,#171b26);
+ box-shadow:0 14px 35px rgba(0,0,0,.14);
+ display:flex;flex-direction:column;gap:20px;
+}
+#avaliacoes .review-card-top{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+#avaliacoes .review-google-icon{font-size:1.7rem;font-weight:800;color:#f3f4f6}
+#avaliacoes .review-source{color:#b8c0cd;font-size:1.04rem}
+#avaliacoes .review-stars{margin-left:auto;letter-spacing:1px;color:#fbbf24;font-size:1.18rem;white-space:nowrap}
+#avaliacoes .review-card blockquote{color:#eef0f5;font-size:1.27rem;line-height:1.68;margin:0;flex:1;overflow-wrap:break-word}
+#avaliacoes .review-author{display:flex;align-items:center;gap:11px;border-top:1px solid rgba(255,255,255,.13);padding-top:17px}
+#avaliacoes .review-avatar{flex:none;width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:#4c1b2b;color:#ffc3c7;font-size:1.4rem;font-weight:800}
+#avaliacoes .review-author strong{display:block;color:#fff;font-size:1.16rem;line-height:1.4}
+#avaliacoes .review-author small{display:block;color:#afb7c5;font-size:.98rem;margin-top:3px}
+#avaliacoes .reviews-controls{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:6px}
+#avaliacoes .reviews-controls button{width:43px;height:43px;border:1px solid rgba(255,255,255,.23);background:#282b35;color:#fff;border-radius:50%;cursor:pointer;font-size:1.3rem;transition:background .2s,transform .2s}
+#avaliacoes .reviews-controls button:hover:not(:disabled){background:#b91c1c;transform:translateY(-2px)}
+#avaliacoes .reviews-controls button:disabled{opacity:.4;cursor:not-allowed}
+#avaliacoes .reviews-counter{font-size:1.12rem;color:#cbd0d9;font-variant-numeric:tabular-nums}
+body.light-theme #avaliacoes{background:radial-gradient(ellipse at 90% 10%,rgba(185,28,28,.07),transparent 44%),linear-gradient(145deg,#f6f8fc,#fff)}
+body.light-theme #avaliacoes h2{color:#222a37;-webkit-text-fill-color:#222a37}
+body.light-theme #avaliacoes .reviews-google-label{color:#596576}
+body.light-theme #avaliacoes .reviews-google-link{color:#a51d29}
+body.light-theme #avaliacoes .review-card{background:#fff;border-color:#e4e7ed;box-shadow:0 12px 30px rgba(30,40,55,.07)}
+body.light-theme #avaliacoes .review-card blockquote{color:#273041}
+body.light-theme #avaliacoes .review-google-icon{color:#b91c1c}
+body.light-theme #avaliacoes .review-source{color:#596575}
+body.light-theme #avaliacoes .review-author{border-color:#e4e7ed}
+body.light-theme #avaliacoes .review-avatar{background:#fce8ea;color:#a51d29}
+body.light-theme #avaliacoes .review-author strong{color:#222a37}
+body.light-theme #avaliacoes .review-author small{color:#596575}
+body.light-theme #avaliacoes .reviews-controls button{background:#fff;border-color:#d9dfe7;color:#b91c1c}
+body.light-theme #avaliacoes .reviews-controls button:hover:not(:disabled){background:#fce8eb}
+body.light-theme #avaliacoes .reviews-counter{color:#556170}
+@media(max-width:980px){#avaliacoes .review-card{flex-basis:calc((100% - 20px)/2)}}
+@media(max-width:630px){#avaliacoes .review-card{flex-basis:100%;min-height:250px}#avaliacoes .reviews-topline{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){#avaliacoes .reviews-track{scroll-behavior:auto}}
